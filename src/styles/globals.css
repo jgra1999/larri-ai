@@ -2,11 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	background-color: #eff0f3;
-	font-family: 'Roboto', sans-serif;
-}
+@layer base {
+	body {
+		background-color: #f1f1f1;
+		font-family: 'Roboto', sans-serif;
+	}
 
-textarea::-webkit-scrollbar {
-	width: 0;
+	textarea::-webkit-scrollbar {
+		width: 0;
+	}
+
+	.message-container {
+		scroll-behavior: smooth;
+		scroll-snap-type: y mandatory;
+		scroll-snap-points-y: 100vh 0;
+	}
+
+	input[type='checkbox']:checked + label:before {
+		@apply bg-primary;
+		@apply border-primary;
+	}
+
+	.calendar__days {
+		@apply p-3;
+		@apply bg-gray-100;
+		@apply font-bold;
+		@apply text-lg;
+	}
+
+	.calendar__date {
+		@apply p-3;
+		@apply text-sm;
+		@apply font-medium;
+		@apply mb-2;
+	}
 }

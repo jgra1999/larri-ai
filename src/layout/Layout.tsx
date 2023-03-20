@@ -5,9 +5,11 @@ import { Header } from './Header'
 type Props = {
 	children: React.ReactElement
 	title: string
+	showHeader: boolean
+	bg?: boolean
 }
 
-export function Layout({ children, title = 'Larri AI' }: Props) {
+export function Layout({ children, title = 'Larri AI', showHeader, bg }: Props) {
 	return (
 		<div>
 			<Head>
@@ -16,7 +18,8 @@ export function Layout({ children, title = 'Larri AI' }: Props) {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<Header />
+
+			{showHeader ? <Header bgWhiteColor={bg} /> : ''}
 
 			{children}
 		</div>

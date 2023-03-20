@@ -12,17 +12,15 @@ type Props = {
 }
 
 export function Message({ message, ai }: Props) {
-	const avatar = ai
-		? 'https://cdn-icons-png.flaticon.com/512/320/320333.png'
-		: 'https://s.yimg.com/ny/api/res/1.2/2iiZwBhBaDu1et6MfAUPDQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MA--/https://s.yimg.com/os/creatr-uploaded-images/2021-07/1134c300-f145-11eb-bbdb-09530ba7e5bc'
+	const avatar = ai ? '/img/chat-icon.jpg' : '/img/default-img.png'
 
-	const textElement = ai ? <TypingEffect text={message} /> : message
+	const textElement = ai ? <TypingEffect text={message.trim()} /> : message
 
 	const handleNotify = () => toast.success('Copiado en portapapeles')
 
 	return (
 		<div
-			className={`flex py-8 px-4 md:px-20 lg:px-52 w-full relative ${
+			className={`flex py-8 px-4 md:px-20 lg:px-52 w-full relative object-none object-bottom ${
 				ai ? 'bg-white' : ''
 			}`}
 		>

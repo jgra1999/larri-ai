@@ -23,6 +23,12 @@
 		"sourceMap": true,
 		"noEmitOnError": false
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"src/supabase/client.js",
+		"src/middleware.ts"
+	],
 	"exclude": ["node_modules"]
 }

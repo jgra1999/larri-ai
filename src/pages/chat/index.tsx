@@ -1,33 +1,95 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
+import { useChatStore } from '@/store/chat'
+import { useUserStore } from '@/store/user'
+import { supabase } from '@/supabase/client'
 
 import { Layout } from '@/layout/Layout'
 import { ChatForm } from '@/components/Chat/ChatForm'
 import { Message } from '@/components/Chat/Message'
 
+interface IEntry {
+	id: number
+	ai: boolean
+	message: string
+}
+
+//? type PlansState = Boolean
+
 export default function index() {
-	const messages = [
-		{
-			id: '1',
-			ai: false,
-			message: 'Que son las IA?'
-		},
-		{
-			id: '2',
-			ai: true,
-			message:
-				'La Inteligencia Artificial (IA) es la habilidad de una máquina para simular la inteligencia y el comportamiento humano. Esto se logra mediante el uso de algoritmos, estructuras de datos y programación para permitir que la máquina sea capaz de razonar, aprender y tomar decisiones. La IA se utiliza para desarrollar sistemas autónomos, robots y software que pueden tomar decisiones inteligentes basadas en los datos que reciben. Los algoritmos de IA también se utilizan para analizar grandes volúmenes de datos y descubrir patrones ocultos o para predecir comportamientos futuros?'
+	const router = useRouter()
+
+	const { profile, setProfile } = useUserStore()
+
+	useEffect(() => {
+		const fetchUserData = async () => {
+			console.log('fetchUSer')
+
+			try {
+				const {
+					data: { user }
+				} = await supabase.auth.getUser()
+
+				const { data, error } = await supabase
+					.from('profiles')
+					.select()
+					.eq('user_id', user?.id)
+
+				setProfile(data?.[0])
+			} catch (error) {
+				console.error(error)
+			}
 		}
-	]
+
+		if (!profile) {
+			fetchUserData()
+		}
+
+		if (profile.free_plan) {
+			const current_date = new Date()
+			const plan_duration = 3 * 24 * 60 * 60 * 1000
+			const last_update_date = new Date(profile.updated_at)
+
+			if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
+				router.push('/perfil')
+			}
+		}
+
+		if (profile.payment_plan) {
+			const current_date = new Date()
+			const plan_duration = 30 * 24 * 60 * 60 * 1000
+			const last_update_date = new Date(profile.updated_at)
+
+			if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
+				router.push('/perfil')
+			}
+		}
+	}, [])
+
+	const { messages } = useChatStore()
+
+	const messagesContainer = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+		if (messagesContainer.current) {
+			messagesContainer.current.scrollTop = messagesContainer.current.scrollHeight
+		}
+	}, [messages])
 
 	return (
 		<div className='w-full h-screen relative'>
-			<Layout title='Larri AI - Chat'>
-				<div className='flex flex-col h-full flex-1'>
-					{messages.map((entry) => (
-						<Message key={entry.id} message={entry.message} ai={entry.ai} />
-					))}
-					<ChatForm />
-				</div>
+			<Layout title='Larri AI - Chat' showHeader={true} bg={true}>
+				<>
+					<div
+						className='flex flex-col h-[78vh] overflow-y-auto'
+						ref={messagesContainer}
+					>
+						{messages.map((entry: IEntry) => (
+							<Message key={entry.id} message={entry.message} ai={entry.ai} />
+						))}
+						<ChatForm />
+					</div>
+				</>
 			</Layout>
 		</div>
 	)

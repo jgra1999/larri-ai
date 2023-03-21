@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 /* componentes */
 import { Layout } from '@/layout/Layout'
-import { CheckoutCard } from '@/components/CheckoutCard'
+import { CheckoutCard } from '@/components/checkout/CheckoutCard'
 
 /* icons */
 import { BinanceIcon, ZinliIcon } from '@/components/Icons'
@@ -16,16 +16,16 @@ export default function index() {
 			<div className='flex flex-col lg:flex-row justify-between items-center relative bg-primary'>
 				<Link href='/' className='absolute left-5 top-3'>
 					<img
-						src='./img/logo-white.png'
+						src='./img/logo-white-beta.png'
 						alt='Logo Larri'
-						className='w-24 md:w-28'
+						className='w-24 md:w-32'
 					/>
 				</Link>
 				<div className='w-full  lg:w-[45%] 2xl:ml-12 p-6 my-32 lg:my-auto'>
-					<div className='space-y-6 mt-5'>
-						<h2 className='font-bold text-5xl'>
+					<div className='space-y-3 mt-5'>
+						<h3 className='font-bold text-5xl'>
 							Elige tu <span className='text-white'>Método de Pago</span>
-						</h2>
+						</h3>
 					</div>
 
 					<div className='flex flex-col justify-center items-center gap-y-10 mt-20 lg:mt-12'>
@@ -35,10 +35,11 @@ export default function index() {
 							message='04244249053'
 							notification='Teléfono copiado'
 						>
-							<div className='font-normal text-gray-500 xl:text-sm space-y-1 text-left'>
+							<div className='text-gray-400 font-medium xl:text-sm space-y-1 text-left'>
 								<p>BBVA Provincial</p>
 								<p>C.I: 27362647</p>
 								<p>tlf: 0424-4249053</p>
+								<p>Monto: 25.52 bs</p>
 							</div>
 						</CheckoutCard>
 						<CheckoutCard
@@ -47,8 +48,9 @@ export default function index() {
 							message='jgra11.2010@gmail.com'
 							notification='Email copiado'
 						>
-							<div className='font-normal text-gray-500 xl:text-sm text-left'>
+							<div className='text-gray-400 font-medium xl:text-sm text-left'>
 								<p>email: jgra11.2010@gmail.com</p>
+								<p>Monto: 1.99$</p>
 							</div>
 						</CheckoutCard>
 						<CheckoutCard
@@ -57,8 +59,9 @@ export default function index() {
 							message='jgra11.2010@gmail.com'
 							notification='Email copiado'
 						>
-							<div className='font-normal text-gray-500 xl:text-sm text-left'>
+							<div className='text-gray-400 font-medium xl:text-sm text-left'>
 								<p>email: jgra11.2010@gmail.com</p>
+								<p>Monto: 1.99$</p>
 							</div>
 						</CheckoutCard>
 					</div>

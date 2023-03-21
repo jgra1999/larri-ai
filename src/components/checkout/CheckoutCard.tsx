@@ -24,7 +24,7 @@ export function CheckoutCard({
 					className='flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow w-80 lg:w-full lg:flex-row md:max-w-xl hover:bg-gray-100'
 					onClick={() => toast.success(`${notification}`)}
 				>
-					<div className='flex items-center justify-center w-full rounded-t-lg h-64 lg:h-[140px] lg:w-1/2 md:rounded-none lg:rounded-l-lg bg-gray-100'>
+					<div className='flex items-center justify-center w-full rounded-t-lg h-64 lg:h-[152px] lg:w-1/2 md:rounded-none lg:rounded-l-lg bg-gray-100'>
 						{icon}
 					</div>
 					<div className='flex flex-col py-4 px-6 leading-normal w-full'>

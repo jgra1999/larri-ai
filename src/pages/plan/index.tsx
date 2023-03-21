@@ -20,7 +20,7 @@ export default function PricingPage() {
 
 				const { error } = await supabase
 					.from('profiles')
-					.update({ free_plan: true })
+					.update({ free_plan: true, days: 3 })
 					.eq('user_id', user?.id)
 			} catch (error) {
 				console.error(error)
@@ -34,21 +34,20 @@ export default function PricingPage() {
 	return (
 		<Layout title='Larri Ai - Seleccionar Plan' showHeader={false}>
 			<div className='flex flex-col lg:flex-row justify-between items-center relative bg-white'>
-				<Link href='/' className=' absolute left-5 top-3'>
-					<img src='./img/logo.png' alt='Logo Larri' className='w-28' />
-				</Link>
+				<div className=' absolute left-5 top-3'>
+					<img src='./img/logo-beta.png' alt='Logo Larri' className='w-32' />
+				</div>
 				<div className='lg:w-3/4 xl:w-[45%] space-y-6 2xl:ml-12 p-6 my-32'>
 					<h2 className='font-bold text-5xl sm:text-6xl'>
 						Elige tu <span className='text-primary'>Plan</span>
 					</h2>
-					<p className='font-medium sm:text-lg text-gray-500'>
-						Inicia tu periodo de prueba de una semana para que puedas evaluar las
-						habilidades de Larri. El plan de pago mensual ofrece más recursos y una
-						mayor flexibilidad.
+					<p className='font-medium sm:text-lg text-gray-400 max-w-[570px]'>
+						Inicia tu periodo de prueba de 3 días y evalúa las habilidades de Larri.
+						El plan de pago mensual ofrece más recursos.
 					</p>
 				</div>
 
-				<div className=' w-full xl:h-screen xl:w-[55%] bg-primary flex flex-wrap items-center justify-around py-8 gap-y-10'>
+				<div className='w-full h-screen xl:w-[55%] bg-primary flex flex-wrap items-center justify-around py-8 gap-y-10'>
 					<PricingCard
 						plan='Prueba Gratis'
 						description='Experimenta la versatilidad de la herramienta con los 3 días de prueba gratuita.'

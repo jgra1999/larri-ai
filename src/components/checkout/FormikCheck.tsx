@@ -27,7 +27,7 @@ import {
 	validateRef
 } from '@/hooks/useFormValidation'
 
-export function CheckoutForm() {
+export function FormikCheck() {
 	const [isSending, setIsSending] = useState(false)
 	const router = useRouter()
 	const initialValues: CheckoutFormValues = {

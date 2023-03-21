@@ -22,7 +22,7 @@ export function Footer() {
 			</div>
 
 			<div className='flex flex-col sm:flex-row sm:justify-around items-center text-center'>
-				<img src='./img/logo-white.png' alt='Larri logo' className='w-24' />
+				<img src='./img/logo-white-beta.png' alt='Larri logo' className='w-24' />
 				<p className='mt-1 text-sm '>
 					Copyright © 2022 Larri, Inc. All rights reserved.
 				</p>

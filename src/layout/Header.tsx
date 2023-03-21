@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useUserStore } from '@/store/user'
 
-import { GlobeAltIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { GlobeAltIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { type } from 'os'
 
 type HeaderProps = {
@@ -29,12 +29,12 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 
 				{profile ? (
 					<Link href='/perfil'>
-						<UserCircleIcon className='h-7 w-7 hover:text-primary transition-colors duration-200' />
+						<UserCircleIcon className='h-7 w-7 text-gray-400 hover:text-primary transition-colors duration-200' />
 					</Link>
 				) : (
 					<Link
 						href='/login'
-						className='font-medium text-gray-500 hover:text-primary transition-colors duration-200'
+						className='font-medium text-gray-400 hover:text-primary transition-colors duration-200'
 					>
 						Iniciar sesión
 					</Link>

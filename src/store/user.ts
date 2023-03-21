@@ -3,7 +3,7 @@ import { create } from 'zustand'
 interface UserI {
 	id: number | null
 	full_name: string
-	user_name: string
+	city: string
 	phone: number | null
 	user_id: string
 	is_student: boolean
@@ -26,7 +26,7 @@ export const useUserStore = create<State & Actions>((set, get) => ({
 	// profile: {
 	// 	id: null,
 	// 	full_name: '',
-	// 	user_name: '',
+	// 	city: '',
 	// 	phone: null,
 	// 	user_id: '',
 	// 	is_student: false,

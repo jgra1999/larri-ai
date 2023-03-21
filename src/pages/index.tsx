@@ -3,13 +3,8 @@ import Link from 'next/link'
 import { Layout } from '../layout/Layout'
 import { Footer } from '@/layout/Footer'
 import { Options } from '@/layout/Options'
-import { useEffect } from 'react'
-import { supabase } from '@/supabase/client'
-import { useUserStore } from '@/store/user'
 
 export default function Home() {
-	const { profile, setProfile } = useUserStore()
-
 	//TODO: Agregar poster al video
 	return (
 		<Layout title='Larri AI - Inicio' showHeader={true} bg={false}>

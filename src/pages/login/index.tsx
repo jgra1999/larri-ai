@@ -25,7 +25,8 @@ export default function LoginPage() {
 			const { data } = await supabase.auth.signInWithOtp({
 				email,
 				options: {
-					emailRedirectTo: 'http://localhost:3000/perfil'
+					emailRedirectTo: 'http://localhost:3000/procesando'
+					//TODO: El middleware no me deja llegar a ese link luego del incio de sesion, la alternativa sera crear una pagina unica para el redireccionamiento, que verifique los datos del usuario y redirija
 				}
 			})
 
@@ -42,7 +43,7 @@ export default function LoginPage() {
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: 'google',
 			options: {
-				redirectTo: 'http://localhost:3000/perfil'
+				redirectTo: 'http://localhost:3000/procesando'
 			}
 		})
 	}
@@ -90,6 +91,7 @@ export default function LoginPage() {
 												className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-400 focus:border-gray-400 block w-full pl-12 p-2.5  outline-none'
 												placeholder='Ingresa tu email'
 												onChange={(e) => setEmail(e.target.value)}
+												required
 											/>
 										</div>
 									</div>

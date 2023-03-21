@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { supabase } from '@/supabase/client'
 import { useUserStore } from '@/store/user'
 
 import { Layout } from '@/layout/Layout'
-import Link from 'next/link'
 
 type DaysRef = HTMLSpanElement | null
 
@@ -15,8 +15,6 @@ export default function ProfilePage() {
 
 	useEffect(() => {
 		const fetchUserData = async () => {
-			console.log('fetchUSer')
-
 			try {
 				const {
 					data: { user }
@@ -28,6 +26,10 @@ export default function ProfilePage() {
 					.eq('user_id', user?.id)
 
 				setProfile(data?.[0])
+
+				if (data?.length === 0) {
+					router.push('/completar-perfil')
+				}
 			} catch (error) {
 				console.error(error)
 			}
@@ -37,18 +39,18 @@ export default function ProfilePage() {
 			fetchUserData()
 		}
 
-		if (profile.days <= 3) {
+		if (profile?.days <= 3) {
 			days.current?.classList.add('text-red-700')
 		}
 
-		if (profile.days > 4 && profile.days <= 10) {
+		if (profile?.days > 4 && profile.days <= 10) {
 			days.current?.classList.add('text-yellow-400')
 		}
 
-		if (profile.days > 10) {
+		if (profile?.days > 10) {
 			days.current?.classList.add('text-green-600')
 		}
-	}, [profile])
+	}, [])
 
 	const handleLogout = async () => {
 		const { error } = await supabase.auth.signOut()
@@ -64,15 +66,14 @@ export default function ProfilePage() {
 				<div className='bg-primary w-full h-96 flex flex-col justify-center items-center gap-y-4 relative'>
 					<img src='/img/default-img.png' alt='User img' className='w-36' />
 					<div className='text-white'>
-						<p className='font-bold text-2xl'>{profile.full_name}</p>
-						<p className='text-sm font-medium text-center'>@{profile.user_name}</p>
+						<p className='font-bold text-2xl'>{profile?.full_name}</p>
 					</div>
-					<div className='bg-white rounded-lg w-11/12 container mx-auto shadow mt-20 p-8 absolute -bottom-[325px] space-y-10'>
+					<div className='bg-white rounded-lg w-11/12 container mx-auto shadow mt-20 p-8 absolute -bottom-[365px] space-y-10'>
 						<div className='flex justify-between'>
 							<div className='space-y-2'>
 								<h5 className='text-4xl font-bold'>Dashboard</h5>
 								<p className='text-gray-400 font-medium text-sm'>
-									{profile.payment_plan ? 'Plan de 30 días' : 'Plan gratuito'}
+									{profile?.payment_plan ? 'Plan de 30 días' : 'Plan gratuito'}
 								</p>
 							</div>
 							<div>
@@ -88,7 +89,7 @@ export default function ProfilePage() {
 						<div className='text-center'>
 							<p className='font-medium text-lg text-gray-400'>
 								<span className='text-9xl' ref={days}>
-									{profile.days}
+									{profile?.days}
 								</span>{' '}
 								días restantes
 							</p>
@@ -100,6 +101,30 @@ export default function ProfilePage() {
 						>
 							Cerrar sesión
 						</button>
+
+						{profile?.days <= 3 ? (
+							<div className='w-full text-center'>
+								<p className='text-gray-400 font-medium text-xs'>
+									No olvides cancelar tu mensualidad.
+								</p>
+							</div>
+						) : (
+							''
+						)}
+
+						{profile?.days <= 0 ? (
+							<div className='w-full text-center -mb-3'>
+								<p className='text-gray-400 font-medium text-xs'>
+									<Link href='/checkout' className='hover:text-primary'>
+										Haz clic aquí para actualizar tu mensualidad
+									</Link>
+									<br />
+									Si reportaste tu pago, el equipo debe estar confirmando el pago.
+								</p>
+							</div>
+						) : (
+							''
+						)}
 					</div>
 				</div>
 			</div>

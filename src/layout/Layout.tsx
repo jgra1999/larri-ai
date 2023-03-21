@@ -4,7 +4,7 @@ import { Header } from './Header'
 
 type Props = {
 	children: React.ReactElement
-	title: string
+	title?: string
 	showHeader: boolean
 	bg?: boolean
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { useChatStore } from '@/store/chat'
 import { useUserStore } from '@/store/user'
@@ -9,7 +9,7 @@ import { ChatForm } from '@/components/Chat/ChatForm'
 import { Message } from '@/components/Chat/Message'
 
 interface IEntry {
-	id: number
+	id: string
 	ai: boolean
 	message: string
 }
@@ -23,8 +23,6 @@ export default function index() {
 
 	useEffect(() => {
 		const fetchUserData = async () => {
-			console.log('fetchUSer')
-
 			try {
 				const {
 					data: { user }
@@ -45,24 +43,18 @@ export default function index() {
 			fetchUserData()
 		}
 
-		if (profile.free_plan) {
-			const current_date = new Date()
-			const plan_duration = 3 * 24 * 60 * 60 * 1000
-			const last_update_date = new Date(profile.updated_at)
+		// if (profile?.free_plan) {
+		// 	const current_date = new Date()
+		// 	const plan_duration = 3 * 24 * 60 * 60 * 1000
+		// 	const last_update_date = new Date(profile?.updated_at)
 
-			if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
-				router.push('/perfil')
-			}
-		}
+		// 	if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
+		// 		router.push('/perfil')
+		// 	}
+		// }
 
-		if (profile.payment_plan) {
-			const current_date = new Date()
-			const plan_duration = 30 * 24 * 60 * 60 * 1000
-			const last_update_date = new Date(profile.updated_at)
-
-			if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
-				router.push('/perfil')
-			}
+		if (profile?.days <= 0) {
+			router.push('/perfil')
 		}
 	}, [])
 

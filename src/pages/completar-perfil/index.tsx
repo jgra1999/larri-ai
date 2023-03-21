@@ -20,7 +20,7 @@ export default function CompleteProfilePage() {
 					.select()
 					.eq('user_id', user?.id)
 
-				if (data) {
+				if (data?.length === 1) {
 					router.push('/perfil')
 				}
 			} catch (error) {

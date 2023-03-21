@@ -15,7 +15,9 @@ export function Footer() {
 					Empezar Ahora
 				</Link>
 				<div className='flex justify-center items-center gap-x-5'>
-					<EnvelopeIcon className='w-8 h-8 text-white' strokeWidth={2.5} />
+					<a href='mailto:larri.soporte@gmail.com' target='_blank'>
+						<EnvelopeIcon className='w-8 h-8 text-white' strokeWidth={2.5} />
+					</a>
 					<InstaIcon />
 					<TwitterIcon />
 				</div>

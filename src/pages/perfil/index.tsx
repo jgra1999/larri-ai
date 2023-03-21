@@ -68,7 +68,7 @@ export default function ProfilePage() {
 					<div className='text-white'>
 						<p className='font-bold text-2xl'>{profile?.full_name}</p>
 					</div>
-					<div className='bg-white rounded-lg w-11/12 container mx-auto shadow mt-20 p-8 absolute -bottom-[365px] space-y-10'>
+					<div className='bg-white rounded-lg w-11/12 container mx-auto shadow mt-20 p-8 absolute -bottom-[335px] sm:-bottom-[325px] space-y-10'>
 						<div className='flex flex-col sm:flex-row gap-y-5 justify-between'>
 							<div className='space-y-2'>
 								<h5 className='text-4xl font-bold'>Dashboard</h5>
@@ -89,18 +89,28 @@ export default function ProfilePage() {
 						<div className='text-center'>
 							<p className='font-medium text-lg text-gray-400'>
 								<span className='text-9xl' ref={days}>
-									{profile?.days} 30
+									{profile?.days}
 								</span>{' '}
 								días restantes
 							</p>
 						</div>
 
-						<button
-							onClick={handleLogout}
-							className='bg-gray-200 px-8 py-2 rounded-lg font-bold'
-						>
-							Cerrar sesión
-						</button>
+						<div className='flex flex-wrap gap-5'>
+							<button
+								onClick={handleLogout}
+								className='bg-gray-200 px-8 py-2 rounded-lg font-bold'
+							>
+								Cerrar sesión
+							</button>
+
+							<a
+								href='mailto:larri.soporte@gmail.com'
+								target='_blank'
+								className='bg-gray-200 px-8 py-2 rounded-lg font-bold'
+							>
+								Soporte técnico
+							</a>
+						</div>
 
 						{profile?.days <= 3 ? (
 							<div className='w-full text-center'>

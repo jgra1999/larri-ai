@@ -69,7 +69,7 @@ export default function ProfilePage() {
 						<p className='font-bold text-2xl'>{profile?.full_name}</p>
 					</div>
 					<div className='bg-white rounded-lg w-11/12 container mx-auto shadow mt-20 p-8 absolute -bottom-[365px] space-y-10'>
-						<div className='flex justify-between'>
+						<div className='flex flex-col sm:flex-row gap-y-5 justify-between'>
 							<div className='space-y-2'>
 								<h5 className='text-4xl font-bold'>Dashboard</h5>
 								<p className='text-gray-400 font-medium text-sm'>
@@ -89,7 +89,7 @@ export default function ProfilePage() {
 						<div className='text-center'>
 							<p className='font-medium text-lg text-gray-400'>
 								<span className='text-9xl' ref={days}>
-									{profile?.days}
+									{profile?.days} 30
 								</span>{' '}
 								días restantes
 							</p>

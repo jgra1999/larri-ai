@@ -81,7 +81,7 @@ export function Form() {
 
 			<Checkbox text='Eres estudiante?' name='isStudent' />
 
-			<Button text={isSending ? <LoadingIcon /> : 'Guardar'} />
+			<Button Btype='submit' text={isSending ? <LoadingIcon /> : 'Guardar'} />
 		</form>
 	)
 }

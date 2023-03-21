@@ -32,7 +32,6 @@ export function Form() {
 			const {
 				data: { user }
 			} = await supabase.auth.getUser()
-			// console.log('🚀 ~ file: Form.tsx:25 ~ handleSubmit ~ user:', user)
 
 			const { error } = await supabase.from('profiles').insert({
 				user_name: username,

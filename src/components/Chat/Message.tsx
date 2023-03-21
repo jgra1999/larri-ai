@@ -34,8 +34,8 @@ export function Message({ message, ai }: Props) {
 				</Avatar>
 
 				<div className='min-h-[20px] flex items-start gap-4 whitespace-pre-wrap flex-1'>
-					<div className='w-full break-words text-sm md:text-base leading-6 font-medium'>
-						<p>{textElement}</p>
+					<div className='w-full break-words text-sm md:text-base leading-6'>
+						<p className='font-medium'>{textElement}</p>
 					</div>
 				</div>
 				{ai && (

@@ -33,7 +33,6 @@ export function UserForm() {
 
 	const handleSubmit = async (values: UserFormValues) => {
 		const { full_name, city, phone, is_student } = values
-		console.log(values)
 
 		try {
 			setIsSending(true)

@@ -29,8 +29,6 @@ export default function LoginPage() {
 					//TODO: acomodar restas redirecciones al dominio de larri cuando lo tenga
 				}
 			})
-
-			console.log(data)
 		} catch (error) {
 			console.error(error)
 		} finally {

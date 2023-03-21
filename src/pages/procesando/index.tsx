@@ -24,8 +24,6 @@ export default function ProcessPage() {
 
 				setProfile(data?.[0])
 
-				console.log(data)
-
 				if (data?.length === 0) {
 					router.push('/completar-perfil')
 				} else {

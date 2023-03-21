@@ -25,8 +25,8 @@ export default function LoginPage() {
 			const { data } = await supabase.auth.signInWithOtp({
 				email,
 				options: {
-					emailRedirectTo: 'http://localhost:3000/procesando'
-					//TODO: El middleware no me deja llegar a ese link luego del incio de sesion, la alternativa sera crear una pagina unica para el redireccionamiento, que verifique los datos del usuario y redirija
+					emailRedirectTo: 'https://larri-ai.netlify.app/procesando'
+					//TODO: acomodar restas redirecciones al dominio de larri cuando lo tenga
 				}
 			})
 
@@ -43,16 +43,17 @@ export default function LoginPage() {
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: 'google',
 			options: {
-				redirectTo: 'http://localhost:3000/procesando'
+				redirectTo: 'https://larri-ai.netlify.app/procesando'
+				//TODO: acomodar restas redirecciones al dominio de larri cuando lo tenga
 			}
 		})
 	}
 
-	const signInWithFacebook = async () => {
-		const { data, error } = await supabase.auth.signInWithOAuth({
-			provider: 'facebook'
-		})
-	}
+	// const signInWithFacebook = async () => {
+	// 	const { data, error } = await supabase.auth.signInWithOAuth({
+	// 		provider: 'facebook'
+	// 	})
+	// }
 
 	return (
 		<>
@@ -111,7 +112,7 @@ export default function LoginPage() {
 						</div>
 
 						<div className='flex flex-wrap justify-center sm:justify-between items-center gap-6 sm:gap-0'>
-							<button className='border-2 border-gray-300 hover:border-[#2eb4e1] py-2 px-12 rounded-lg group transition-colors duration-200'>
+							<button className='border-2 border-gray-300 py-2 px-12 rounded-lg group transition-colors duration-200 cursor-not-allowed'>
 								<TwitterSolidIcon />
 							</button>
 							<button
@@ -120,10 +121,7 @@ export default function LoginPage() {
 							>
 								<GmailSolidIcon />
 							</button>
-							<button
-								className='border-2 border-gray-300 hover:border-[#3b5998] py-2 px-12 rounded-lg group transition-colors duration-200'
-								onClick={signInWithFacebook}
-							>
+							<button className='border-2 border-gray-300 py-2 px-12 rounded-lg group transition-colors duration-200 cursor-not-allowed'>
 								<FacebookSolidIcon />
 							</button>
 						</div>
@@ -133,3 +131,5 @@ export default function LoginPage() {
 		</>
 	)
 }
+
+/* twt: hover:border-[#2eb4e1] face: hover:border-[#3b5998]  */

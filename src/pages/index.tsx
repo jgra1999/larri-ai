@@ -26,7 +26,10 @@ export default function Home() {
 					</div>
 					<div className='bg-white max-h-[600px] w-11/12 shadow-md mx-auto container rounded-xl my-10 flex justify-center items-center'>
 						<video className='max-h-[600px] w-11/12' autoPlay loop muted>
-							<source src='https://res.cloudinary.com/hothra/video/upload/v1678990923/Larri-AI/home-video_adspfd.mp4' />
+							<source
+								src='https://res.cloudinary.com/hothra/video/upload/v1678990923/Larri-AI/home-video_adspfd.mp4'
+								type='video/mp4'
+							/>
 						</video>
 					</div>
 					<section className='w-full flex flex-col gap-y-10 lg:gap-x-10 md:flex-row justify-around items-center bg-white px-8 md:px-16 py-10'>

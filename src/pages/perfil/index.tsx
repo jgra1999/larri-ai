@@ -25,11 +25,11 @@ export default function ProfilePage() {
 					.select()
 					.eq('user_id', user?.id)
 
-				setProfile(data?.[0])
-
 				if (data?.length === 0) {
 					router.push('/completar-perfil')
 				}
+
+				setProfile(data?.[0])
 			} catch (error) {
 				console.error(error)
 			}

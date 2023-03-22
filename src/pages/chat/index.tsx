@@ -33,6 +33,11 @@ export default function index() {
 					.select()
 					.eq('user_id', user?.id)
 
+				if (data?.length === 0) {
+					router.push('/completar-perfil')
+					return
+				}
+
 				setProfile(data?.[0])
 			} catch (error) {
 				console.error(error)

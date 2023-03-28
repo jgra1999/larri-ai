@@ -23,11 +23,10 @@ export function Footer() {
 				</div>
 			</div>
 
-			<div className='flex flex-col sm:flex-row sm:justify-around items-center text-center'>
+			<div className='flex flex-col sm:flex-row sm:justify-around items-center text-center text-sm space-y-1'>
 				<img src='./img/logo-white-beta.png' alt='Larri logo' className='w-24' />
-				<p className='mt-1 text-sm '>
-					Copyright © 2022 Larri, Inc. All rights reserved.
-				</p>
+				<p>Copyright © 2023 Larri, Inc. All rights reserved.</p>
+				<p>⚡Powered by Iventium</p>
 			</div>
 		</footer>
 	)

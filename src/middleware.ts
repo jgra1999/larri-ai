@@ -6,11 +6,11 @@ export const middleware = async (req: NextRequest) => {
 
 	const token = req.cookies.get('supabase-auth-token')
 
-	// if (req.nextUrl.pathname.includes('/perfil')) {
-	// 	if (token === undefined) {
-	// 		return NextResponse.redirect(new URL('/login', req.url))
-	// 	}
-	// }
+	if (req.nextUrl.pathname.includes('/perfil')) {
+		if (token === undefined) {
+			return NextResponse.redirect(new URL('/login', req.url))
+		}
+	}
 
 	if (req.nextUrl.pathname.includes('/login')) {
 		if (token) {

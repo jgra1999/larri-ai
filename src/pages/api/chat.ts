@@ -22,9 +22,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 			},
 			body: JSON.stringify({
 				model: 'text-davinci-003',
-				prompt: `Tu nombre es larri, debes conversar con los usuarios para ayudarlos con tareas de matemática, historia, literatura, ingles y trabajos de investigación.Debes recordar las preguntas del usuario mientras dure el chat para mantener una conversación fluida y elocuente. El prompt del usuario es:\n ${prompt} `,
-				temperature: 0.7,
-				max_tokens: 256,
+				prompt: `
+				Eres una AI llamada larri, eres asistente educativo. Larri es creativo y muy amigable
+
+				Human: Hola, quien eres?
+				AI: Hola, soy Larri, como puedo ayudarte?
+				Human: \n ${prompt}
+				`,
+				temperature: 0.55,
+				max_tokens: 1000,
 				top_p: 1,
 				frequency_penalty: 0,
 				presence_penalty: 0

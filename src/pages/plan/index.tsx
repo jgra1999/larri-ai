@@ -27,7 +27,7 @@ export default function PricingPage() {
 			}
 			router.push('/chat')
 		} else {
-			router.push('/checkout')
+			router.push('https://iventium.com/producto/larri-ia-suscripcion/')
 		}
 	}
 

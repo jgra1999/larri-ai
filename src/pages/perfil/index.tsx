@@ -62,80 +62,80 @@ export default function ProfilePage() {
 
 	return (
 		<Layout title='Larri Ai - Perfil' showHeader={true} bg={true}>
-			<div className='w-full h-full'>
-				<div className='bg-primary w-full h-96 flex flex-col justify-center items-center gap-y-4 relative'>
+			<div className='w-full h-full bg-white'>
+				<div className='bg-primary w-full h-96 flex flex-col justify-center items-center gap-y-4'>
 					<img src='/img/default-img.png' alt='User img' className='w-36' />
 					<div className='text-white'>
 						<p className='font-bold text-2xl'>{profile?.full_name}</p>
 					</div>
-					<div className='bg-white rounded-lg w-11/12 container mx-auto shadow mt-20 p-8 absolute -bottom-[335px] sm:-bottom-[325px] space-y-10'>
-						<div className='flex flex-col sm:flex-row gap-y-5 justify-between'>
-							<div className='space-y-2'>
-								<h5 className='text-4xl font-bold'>Dashboard</h5>
-								<p className='text-gray-400 font-medium text-sm'>
-									{profile?.payment_plan ? 'Plan de 30 días' : 'Plan gratuito'}
-								</p>
-							</div>
-							<div>
-								<Link
-									href='/chat'
-									className='py-3 px-8 rounded-lg text-lg bg-primary font-bold text-white hover:bg-[#fe984f] transition-colors duration-200'
-								>
-									Ir al chat
-								</Link>
-							</div>
-						</div>
-
-						<div className='text-center'>
-							<p className='font-medium text-lg text-gray-400'>
-								<span className='text-9xl' ref={days}>
-									{profile?.days}
-								</span>{' '}
-								días restantes
+				</div>
+				<div className=' w-11/12 container mx-auto p-8 space-y-10'>
+					<div className='flex flex-col sm:flex-row gap-y-5 justify-between'>
+						<div className='space-y-2'>
+							<h5 className='text-4xl font-bold'>Dashboard</h5>
+							<p className='text-gray-400 font-medium text-sm'>
+								{profile?.payment_plan ? 'Plan de 30 días' : 'Plan gratuito'}
 							</p>
 						</div>
-
-						<div className='flex flex-wrap gap-5'>
-							<button
-								onClick={handleLogout}
-								className='bg-gray-200 px-8 py-2 rounded-lg font-bold'
+						<div>
+							<Link
+								href='/chat'
+								className='py-3 px-8 rounded-lg text-lg bg-primary font-bold text-white hover:bg-[#fe984f] transition-colors duration-200'
 							>
-								Cerrar sesión
-							</button>
-
-							<a
-								href='mailto:larri.soporte@gmail.com'
-								target='_blank'
-								className='bg-gray-200 px-8 py-2 rounded-lg font-bold'
-							>
-								Soporte técnico
-							</a>
+								Ir al chat
+							</Link>
 						</div>
-
-						{profile?.days <= 3 ? (
-							<div className='w-full text-center'>
-								<p className='text-gray-400 font-medium text-xs'>
-									No olvides cancelar tu mensualidad.
-								</p>
-							</div>
-						) : (
-							''
-						)}
-
-						{profile?.days <= 0 ? (
-							<div className='w-full text-center -mb-3'>
-								<p className='text-gray-400 font-medium text-xs'>
-									<Link href='/checkout' className='hover:text-primary'>
-										Haz clic aquí para actualizar tu mensualidad
-									</Link>
-									<br />
-									Si reportaste tu pago, el equipo debe estar confirmando el pago.
-								</p>
-							</div>
-						) : (
-							''
-						)}
 					</div>
+
+					<div className='text-center'>
+						<p className='font-medium text-lg text-gray-400'>
+							<span className='text-9xl' ref={days}>
+								{profile?.days}
+							</span>{' '}
+							días restantes
+						</p>
+					</div>
+
+					<div className='flex flex-wrap gap-5'>
+						<button
+							onClick={handleLogout}
+							className='bg-gray-200 px-8 py-2 rounded-lg font-bold'
+						>
+							Cerrar sesión
+						</button>
+
+						<a
+							href='mailto:larri.soporte@gmail.com'
+							target='_blank'
+							className='bg-gray-200 px-8 py-2 rounded-lg font-bold'
+						>
+							Soporte técnico
+						</a>
+					</div>
+
+					{profile?.days <= 3 ? (
+						<div className='w-full text-center'>
+							<p className='text-gray-400 font-medium text-xs'>
+								No olvides cancelar tu mensualidad.
+							</p>
+						</div>
+					) : (
+						''
+					)}
+
+					{profile?.days <= 0 ? (
+						<div className='w-full text-center -mb-3'>
+							<p className='text-gray-400 font-medium text-xs'>
+								<Link href='/checkout' className='hover:text-primary'>
+									Haz clic aquí para actualizar tu mensualidad
+								</Link>
+								<br />
+								Si reportaste tu pago, el equipo debe estar confirmando el pago.
+							</p>
+						</div>
+					) : (
+						''
+					)}
 				</div>
 			</div>
 		</Layout>

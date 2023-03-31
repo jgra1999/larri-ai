@@ -22,7 +22,7 @@ export function ChatForm() {
 	}
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLFormElement>) => {
-		if (e.key === 'Enter' && e.shiftKey) {
+		if (e.key === 'Enter' && !e.shiftKey) {
 			e.preventDefault()
 			handleSubmit(e)
 		}
@@ -63,7 +63,7 @@ export function ChatForm() {
 				</form>
 				<div className='text-center mt-2'>
 					<p className='text-gray-400 text-[10px]'>
-						Presiona shift + enter para enviar
+						Presiona shift + enter para hacer un salto de linea
 					</p>{' '}
 				</div>
 			</div>

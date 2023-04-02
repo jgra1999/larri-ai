@@ -55,7 +55,7 @@ export default function LoginPage() {
 
 	return (
 		<>
-			<Layout title='Larri AI - Login' showHeader={true}>
+			<Layout title='Larri AI - Login' showHeader={true} googleIndex={true}>
 				<main className='container mx-auto mt-28 w-full flex flex-col items-center '>
 					<div className='flex flex-col items-center mb-6 px-2'>
 						<img src='/img/icon.png' alt='Icon' className='w-28' />

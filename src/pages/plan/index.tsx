@@ -30,9 +30,13 @@ export default function PricingPage() {
 			router.push('https://iventium.com/producto/larri-ia-suscripcion/')
 		}
 	}
-
+	//TODO: adaptar esta pagina para poder ser indexada en google.
 	return (
-		<Layout title='Larri Ai - Seleccionar Plan' showHeader={false}>
+		<Layout
+			title='Larri Ai - Seleccionar Plan'
+			showHeader={false}
+			googleIndex={false}
+		>
 			<div className='flex flex-col lg:flex-row justify-between items-center relative bg-white'>
 				<div className=' absolute left-5 top-3'>
 					<img src='./img/logo-beta.png' alt='Logo Larri' className='w-32' />

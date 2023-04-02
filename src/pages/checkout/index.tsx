@@ -12,7 +12,7 @@ import { CheckoutForm } from '@/components/checkout/CheckoutForm'
 
 export default function index() {
 	return (
-		<Layout title='Larri Ai - Checkout' showHeader={false}>
+		<Layout title='Larri Ai - Checkout' showHeader={false} googleIndex={false}>
 			<div className='flex flex-col lg:flex-row justify-between items-center relative bg-primary'>
 				<Link href='/' className='absolute left-5 top-3'>
 					<img

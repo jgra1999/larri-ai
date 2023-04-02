@@ -28,7 +28,7 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 				</div> */}
 
 				{profile ? (
-					<Link href='/perfil'>
+					<Link href='/perfil' passHref>
 						<UserCircleIcon className='h-7 w-7 text-gray-400 hover:text-primary transition-colors duration-200' />
 					</Link>
 				) : (

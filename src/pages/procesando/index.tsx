@@ -39,7 +39,7 @@ export default function ProcessPage() {
 		}
 	}, [])
 	return (
-		<Layout showHeader={false}>
+		<Layout showHeader={false} googleIndex={false}>
 			<div>
 				<div className=' absolute left-5 top-3'>
 					<img src='./img/logo-beta.png' alt='Logo Larri' className='w-28' />

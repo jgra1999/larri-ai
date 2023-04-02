@@ -75,7 +75,12 @@ export default function index() {
 
 	return (
 		<div className='w-full h-screen relative'>
-			<Layout title='Larri AI - Chat' showHeader={true} bg={true}>
+			<Layout
+				title='Larri AI - Chat'
+				showHeader={true}
+				bg={true}
+				googleIndex={false}
+			>
 				<>
 					<div
 						className='flex flex-col h-[78vh] overflow-y-auto'

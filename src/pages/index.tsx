@@ -7,7 +7,14 @@ import { Options } from '@/layout/Options'
 export default function Home() {
 	//TODO: Agregar poster al video
 	return (
-		<Layout title='Larri AI - Inicio' showHeader={true} bg={false}>
+		<Layout
+			title='Larri AI - Inicio'
+			showHeader={true}
+			bg={false}
+			googleIndex={true}
+			metaDescription='Larri es una inteligencia artificial con fines educativos que ayuda a los estudiantes con sus tareas y trabajos de investigación.'
+			metaKeywords='inteligencia artificial, Larri, educación, tareas, investigación'
+		>
 			<>
 				<main>
 					<div className='flex flex-col gap-y-5 items-center text-center mt-10'>

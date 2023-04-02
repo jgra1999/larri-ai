@@ -60,8 +60,14 @@ export default function ProfilePage() {
 		console.error(error)
 	}
 
+	//TODO: acomodar esta ruta, deberia de ser una ruta dinamica
 	return (
-		<Layout title='Larri Ai - Perfil' showHeader={true} bg={true}>
+		<Layout
+			title='Larri Ai - Perfil'
+			showHeader={true}
+			bg={true}
+			googleIndex={false}
+		>
 			<div className='w-full h-full bg-white'>
 				<div className='bg-primary w-full h-96 flex flex-col justify-center items-center gap-y-4'>
 					<img src='/img/default-img.png' alt='User img' className='w-36' />

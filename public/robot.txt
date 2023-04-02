@@ -1,0 +1,7 @@
+# Block all crawlers for /perfil
+User-agent: *
+Disallow: /perfil
+
+# Block all crawlers for /chat
+User-agent: *
+Disallow: /chat

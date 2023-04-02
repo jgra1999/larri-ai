@@ -31,7 +31,11 @@ export default function CompleteProfilePage() {
 		fetchUserData()
 	}, [])
 	return (
-		<Layout title='Larri Ai - Completar Perfil' showHeader={false}>
+		<Layout
+			title='Larri Ai - Completar Perfil'
+			showHeader={false}
+			googleIndex={false}
+		>
 			<div className='flex justify-between items-center relative bg-white h-screen'>
 				<div className=' absolute left-5 top-3'>
 					<img src='./img/logo-beta.png' alt='Logo Larri' className='w-32' />

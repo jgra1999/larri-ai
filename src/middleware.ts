@@ -6,12 +6,11 @@ export const middleware = async (req: NextRequest) => {
 
 	const token = req.cookies.get('supabase-auth-token')
 
-	// if (req.nextUrl.pathname.includes('/perfil')) {
-	// 	if (token === undefined) {
-	// 		return NextResponse.redirect(new URL('/login', req.url))
-	// 	}
-	// }
-	//TODO: QUITAR ESTOOOOOO
+	if (req.nextUrl.pathname.includes('/perfil')) {
+		if (token === undefined) {
+			return NextResponse.redirect(new URL('/login', req.url))
+		}
+	}
 
 	if (req.nextUrl.pathname.includes('/login')) {
 		if (token) {
@@ -19,11 +18,11 @@ export const middleware = async (req: NextRequest) => {
 		}
 	}
 
-	// if (req.nextUrl.pathname.includes('/chat')) {
-	// 	if (token === undefined) {
-	// 		return NextResponse.redirect(new URL('/login', req.url))
-	// 	}
-	// }
+	if (req.nextUrl.pathname.includes('/chat')) {
+		if (token === undefined) {
+			return NextResponse.redirect(new URL('/login', req.url))
+		}
+	}
 
 	return NextResponse.next()
 }

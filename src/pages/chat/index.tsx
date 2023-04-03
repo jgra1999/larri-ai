@@ -14,8 +14,6 @@ interface IEntry {
 	message: string
 }
 
-//? type PlansState = Boolean
-
 export default function index() {
 	const router = useRouter()
 
@@ -48,18 +46,24 @@ export default function index() {
 			fetchUserData()
 		}
 
-		// if (profile?.free_plan) {
-		// 	const current_date = new Date()
-		// 	const plan_duration = 3 * 24 * 60 * 60 * 1000
-		// 	const last_update_date = new Date(profile?.updated_at)
+		if (profile?.free_plan) {
+			const current_date = new Date()
+			const plan_duration = 3 * 24 * 60 * 60 * 1000
+			const last_update_date = new Date(profile?.updated_at)
 
-		// 	if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
-		// 		router.push('/perfil')
-		// 	}
-		// }
+			if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
+				router.push('/perfil')
+			}
+		}
 
-		if (profile?.days <= 0) {
-			router.push('/perfil')
+		if (profile?.payment_plan) {
+			const current_date = new Date()
+			const plan_duration = 30 * 24 * 60 * 60 * 1000
+			const last_update_date = new Date(profile?.updated_at)
+
+			if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
+				router.push('/perfil')
+			}
 		}
 	}, [])
 

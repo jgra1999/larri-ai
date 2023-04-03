@@ -38,18 +38,6 @@ export default function ProfilePage() {
 		if (!profile) {
 			fetchUserData()
 		}
-
-		if (profile?.days <= 3) {
-			days.current?.classList.add('text-red-700')
-		}
-
-		if (profile?.days > 4 && profile.days <= 10) {
-			days.current?.classList.add('text-yellow-400')
-		}
-
-		if (profile?.days > 10) {
-			days.current?.classList.add('text-green-600')
-		}
 	}, [])
 
 	const handleLogout = async () => {
@@ -75,13 +63,10 @@ export default function ProfilePage() {
 						<p className='font-bold text-2xl'>{profile?.full_name}</p>
 					</div>
 				</div>
-				<div className=' w-11/12 container mx-auto p-8 space-y-10'>
+				<div className=' w-11/12 container mx-auto p-8 space-y-20 h-full'>
 					<div className='flex flex-col sm:flex-row gap-y-5 justify-between'>
 						<div className='space-y-2'>
 							<h5 className='text-4xl font-bold'>Dashboard</h5>
-							<p className='text-gray-400 font-medium text-sm'>
-								{profile?.payment_plan ? 'Plan de 30 días' : 'Plan gratuito'}
-							</p>
 						</div>
 						<div>
 							<Link
@@ -94,11 +79,8 @@ export default function ProfilePage() {
 					</div>
 
 					<div className='text-center'>
-						<p className='font-medium text-lg text-gray-400'>
-							<span className='text-9xl' ref={days}>
-								{profile?.days}
-							</span>{' '}
-							días restantes
+						<p className='text-gray-400 font-medium text-5xl'>
+							{profile?.payment_plan ? 'Plan de 30 días' : 'Plan gratuito'}
 						</p>
 					</div>
 

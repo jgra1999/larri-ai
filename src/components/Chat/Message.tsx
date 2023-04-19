@@ -14,7 +14,7 @@ type Props = {
 export function Message({ message, ai }: Props) {
 	const avatar = ai ? '/img/chat-icon.jpg' : '/img/default-img.png'
 
-	const textElement = ai ? <TypingEffect text={message.trim()} /> : message
+	const textElement = ai ? <TypingEffect text={message} /> : message
 
 	const handleNotify = () => toast.success('Copiado en portapapeles')
 

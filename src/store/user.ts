@@ -13,8 +13,21 @@ interface UserI {
 	payment_plan: boolean
 }
 
+const initialState = {
+	id: null,
+	full_name: '',
+	city: '',
+	phone: null,
+	user_id: '',
+	is_student: false,
+	updated_at: '',
+	created_at: '',
+	free_plan: false,
+	payment_plan: false
+}
+
 type State = {
-	profile: any
+	profile: UserI
 }
 
 type Actions = {
@@ -23,28 +36,17 @@ type Actions = {
 }
 
 export const useUserStore = create<State & Actions>((set, get) => ({
-	// profile: {
-	// 	id: null,
-	// 	full_name: '',
-	// 	city: '',
-	// 	phone: null,
-	// 	user_id: '',
-	// 	is_student: false,
-	// 	updated_at: '',
-	// 	created_at: '',
-	// 	free_plan: false,
-	// 	payment_plan: false
-	// },
+	profile: initialState,
 
-	profile: '',
+	// profile: '',
 
-	setProfile: (profile: any) =>
+	setProfile: (profile: UserI) =>
 		set((state) => ({
 			profile
 		})),
 
 	logout: () =>
 		set((state) => ({
-			profile: ''
+			profile: initialState
 		}))
 }))

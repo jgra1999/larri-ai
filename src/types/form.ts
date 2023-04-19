@@ -17,4 +17,5 @@ export interface UserFormValues {
 	city: string | undefined
 	phone: number | undefined
 	is_student: boolean
+	terms: boolean
 }

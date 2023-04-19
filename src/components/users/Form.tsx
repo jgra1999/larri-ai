@@ -44,7 +44,7 @@ export function Form() {
 			console.error(error)
 		} finally {
 			setIsSending(false)
-			router.push('/plan')
+			router.push('/planes')
 		}
 	}
 

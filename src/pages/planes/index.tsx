@@ -1,15 +1,44 @@
 import { PricingCard } from '@/components/users/PricingCard'
 import { Layout } from '@/layout/Layout'
+import { useUserStore } from '@/store/user'
 import { supabase } from '@/supabase/client'
 import { CheckIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 type eButton = React.MouseEvent<HTMLButtonElement, MouseEvent>
 
 export default function PricingPage() {
 	const router = useRouter()
+	const { profile, setProfile } = useUserStore()
+
+	useEffect(() => {
+		const fetchUserData = async () => {
+			try {
+				const {
+					data: { user }
+				} = await supabase.auth.getUser()
+
+				const { data, error } = await supabase
+					.from('profiles')
+					.select()
+					.eq('user_id', user?.id)
+
+				if (data?.length === 0) {
+					router.push('/completar-perfil')
+				}
+
+				setProfile(data?.[0])
+			} catch (error) {
+				console.error(error)
+			}
+		}
+
+		if (!profile?.user_id) {
+			fetchUserData()
+		}
+	}, [])
 
 	const updatePlan = async (e: eButton) => {
 		if (e.currentTarget.textContent === 'Comienza ahora') {
@@ -30,16 +59,18 @@ export default function PricingPage() {
 			router.push('https://iventium.com/producto/larri-ia-suscripcion/')
 		}
 	}
-	//TODO: adaptar esta pagina para poder ser indexada en google.
 	return (
 		<Layout
 			title='Larri Ai - Seleccionar Plan'
+			metaDescription='Aprovecha al máximo el poder de larri con nuestros planes de uso. Ofrecemos una prueba gratuita y una membresía mensual de solo 2$.'
 			showHeader={false}
-			googleIndex={false}
+			googleIndex={true}
 		>
 			<div className='flex flex-col lg:flex-row justify-between items-center relative bg-white'>
 				<div className=' absolute left-5 top-3'>
-					<img src='./img/logo-beta.png' alt='Logo Larri' className='w-32' />
+					<Link href='/' passHref>
+						<img src='./img/logo-beta.png' alt='Logo Larri' className='w-32' />
+					</Link>
 				</div>
 				<div className='lg:w-3/4 xl:w-[45%] space-y-6 2xl:ml-12 p-6 my-32'>
 					<h2 className='font-bold text-5xl sm:text-6xl'>
@@ -58,12 +89,18 @@ export default function PricingPage() {
 						price='$0.00'
 					>
 						<>
-							<button
-								className='py-2 px-4 rounded-lg w-full text-lg bg-primary font-bold text-white hover:bg-[#fe984f] transition-colors duration-200 flex justify-center'
-								onClick={updatePlan}
-							>
-								Comienza ahora
-							</button>
+							{profile?.free_plan ? (
+								<div className='py-2 px-4 rounded-lg w-full text-lg bg-gray-300 font-bold text-white flex justify-center cursor-not-allowed'>
+									Comienza ahora
+								</div>
+							) : (
+								<button
+									className='py-2 px-4 rounded-lg w-full text-lg bg-primary font-bold text-white hover:bg-[#fe984f] transition-colors duration-200 flex justify-center'
+									onClick={updatePlan}
+								>
+									Comienza ahora
+								</button>
+							)}
 							<ul className='space-y-2'>
 								<li className='flex gap-x-2 text-sm text-gray-500 font-medium'>
 									<CheckIcon className='w-5 h-5 text-primary stroke-2' /> Uso de la

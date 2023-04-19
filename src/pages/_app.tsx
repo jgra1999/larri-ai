@@ -15,7 +15,7 @@ export default function MyApp({ Component, pageProps }: AppProps<{}>) {
 
 			{/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
 			<Script
-				src='https://www.googletagmanager.com/gtag/js?id=G-3ZVBJ60L83'
+				src='https://www.googletagmanager.com/gtag/js?id=G-Z0362T3MC6'
 				strategy='afterInteractive'
 			/>
 			<Script id='google-analytics' strategy='afterInteractive'>
@@ -24,11 +24,12 @@ export default function MyApp({ Component, pageProps }: AppProps<{}>) {
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-3ZVBJ60L83', {
+          gtag('config', 'G-Z0362T3MC6', {
 			page_path: window.location.pathname,
 		  });
         `}
 			</Script>
+
 			<Component {...pageProps} />
 		</>
 	)

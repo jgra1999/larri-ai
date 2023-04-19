@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { supabase } from '@/supabase/client'
@@ -6,12 +6,9 @@ import { useUserStore } from '@/store/user'
 
 import { Layout } from '@/layout/Layout'
 
-type DaysRef = HTMLSpanElement | null
-
 export default function ProfilePage() {
 	const router = useRouter()
 	const { profile, setProfile, logout } = useUserStore()
-	const days = useRef<DaysRef>(null)
 
 	useEffect(() => {
 		const fetchUserData = async () => {
@@ -35,15 +32,15 @@ export default function ProfilePage() {
 			}
 		}
 
-		if (!profile) {
+		if (!profile?.user_id) {
 			fetchUserData()
 		}
 	}, [])
 
 	const handleLogout = async () => {
 		const { error } = await supabase.auth.signOut()
-		router.push('/')
 		logout()
+		router.push('/')
 
 		console.error(error)
 	}
@@ -93,37 +90,13 @@ export default function ProfilePage() {
 						</button>
 
 						<a
-							href='mailto:larri.soporte@gmail.com'
+							href='mailto:soporte@larri-ai.com'
 							target='_blank'
 							className='bg-gray-200 px-8 py-2 rounded-lg font-bold'
 						>
 							Soporte técnico
 						</a>
 					</div>
-
-					{profile?.days <= 3 ? (
-						<div className='w-full text-center'>
-							<p className='text-gray-400 font-medium text-xs'>
-								No olvides cancelar tu mensualidad.
-							</p>
-						</div>
-					) : (
-						''
-					)}
-
-					{profile?.days <= 0 ? (
-						<div className='w-full text-center -mb-3'>
-							<p className='text-gray-400 font-medium text-xs'>
-								<Link href='/checkout' className='hover:text-primary'>
-									Haz clic aquí para actualizar tu mensualidad
-								</Link>
-								<br />
-								Si reportaste tu pago, el equipo debe estar confirmando el pago.
-							</p>
-						</div>
-					) : (
-						''
-					)}
 				</div>
 			</div>
 		</Layout>

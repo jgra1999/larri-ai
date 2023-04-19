@@ -25,8 +25,7 @@ export default function LoginPage() {
 			const { data } = await supabase.auth.signInWithOtp({
 				email,
 				options: {
-					emailRedirectTo: 'https://larri-ai.netlify.app/procesando'
-					//TODO: acomodar restas redirecciones al dominio de larri cuando lo tenga
+					emailRedirectTo: 'https://larri-ai.com/procesando'
 				}
 			})
 		} catch (error) {
@@ -41,8 +40,7 @@ export default function LoginPage() {
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: 'google',
 			options: {
-				redirectTo: 'https://larri-ai.netlify.app/procesando'
-				//TODO: acomodar restas redirecciones al dominio de larri cuando lo tenga
+				redirectTo: 'https://larri-ai.com/procesando'
 			}
 		})
 	}

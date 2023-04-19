@@ -28,7 +28,8 @@ export function UserForm() {
 		full_name: undefined,
 		city: undefined,
 		phone: undefined,
-		is_student: false
+		is_student: false,
+		terms: false
 	}
 
 	const handleSubmit = async (values: UserFormValues) => {
@@ -51,7 +52,7 @@ export function UserForm() {
 			console.error(error)
 		} finally {
 			setIsSending(false)
-			router.push('/plan')
+			router.push('/planes')
 		}
 	}
 	return (
@@ -70,7 +71,7 @@ export function UserForm() {
 					value={initialValues.full_name}
 				/>
 				<FormikInput
-					label='City'
+					label='Ciudad'
 					name='city'
 					inputType='text'
 					placeholder='Caracas'
@@ -89,40 +90,80 @@ export function UserForm() {
 					validate={validatePhone}
 				/>
 
-				<div>
-					<Field
-						type='checkbox'
-						id='isStudent'
-						name='is_student'
-						className='hidden'
-					/>
-					<label
-						htmlFor='isStudent'
-						className='inline-block
-								py-1
-					  			pr-4
-					  			pl-10
-								text-sm
-                                text-gray-500
-								font-medium
-								relative
-								cursor-pointer
-								transition-all
-								duration-300
-								before:content-[""]
-								before:w-4
-								before:h-4
-								before:inline-block
-								before:border-2
-								before:border-gray-300
-								before:bg-white
-                                before:rounded
-								before:absolute
-								before:top-2
-								before:left-3'
-					>
-						Eres estudiante?
-					</label>
+				<div className='space-y-2'>
+					<div>
+						<Field
+							type='checkbox'
+							id='isStudent'
+							name='is_student'
+							className='hidden'
+						/>
+						<label
+							htmlFor='isStudent'
+							className='inline-block
+									py-1
+									pr-4
+									pl-10
+									text-sm
+												text-gray-500
+									font-medium
+									relative
+									cursor-pointer
+									transition-all
+									duration-300
+									before:content-[""]
+									before:w-4
+									before:h-4
+									before:inline-block
+									before:border-2
+									before:border-gray-300
+									before:bg-white
+												before:rounded
+									before:absolute
+									before:top-2
+									before:left-3'
+						>
+							Eres estudiante?
+						</label>
+					</div>
+
+					<div>
+						<Field type='checkbox' name='terms' id='terms' className='hidden' />
+						<label
+							htmlFor='terms'
+							className='inline-block
+									py-1
+									pr-4
+									pl-10
+									text-sm
+												text-gray-500
+									font-medium
+									relative
+									cursor-pointer
+									transition-all
+									duration-300
+									before:content-[""]
+									before:w-4
+									before:h-4
+									before:inline-block
+									before:border-2
+									before:border-gray-300
+									before:bg-white
+												before:rounded
+									before:absolute
+									before:top-2
+									before:left-3'
+						>
+							Has leído y estas de acuerdo con nuestros{' '}
+							<a
+								href='/terminos-y-condiciones'
+								target='_blank'
+								className='text-primary'
+							>
+								términos y condiciones?
+							</a>
+						</label>
+					</div>
 				</div>
 
 				<Button Btype='submit' text={isSending ? <LoadingIcon /> : 'Guardar'} />

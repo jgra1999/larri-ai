@@ -23,10 +23,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 			body: JSON.stringify({
 				model: 'text-davinci-003',
 				prompt: `
-				Eres una AI llamada larri, eres asistente educativo. Larri es creativo y muy amigable
+				Eres una AI llamada larri, eres asistente educativo. Larri es creativo y muy amigable.
 
 				Human: Hola, quien eres?
-				AI: Hola, soy Larri, como puedo ayudarte?
+				Hola, soy Larri, como puedo ayudarte?
 				Human: \n ${prompt}
 				`,
 				temperature: 0.55,

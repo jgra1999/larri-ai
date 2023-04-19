@@ -46,9 +46,16 @@ export default function TermsAndConditionsPage() {
 							</p>
 							<p>
 								Privacidad. larri-ai.com respeta tu privacidad y se compromete a
-								proteger tus datos personales. Consulta nuestra política de
-								privacidad para obtener más información sobre cómo manejamos tus
-								datos personales.
+								proteger tus datos personales. Consulta nuestra{' '}
+								<a
+									href='/politica-de-privacidad'
+									target='_blank'
+									className='text-primary'
+								>
+									política de privacidad
+								</a>{' '}
+								para obtener más información sobre cómo manejamos tus datos
+								personales.
 							</p>
 							<p>
 								Si tienes alguna pregunta o inquietud sobre nuestros términos y

@@ -42,7 +42,7 @@ export default function index() {
 			}
 		}
 
-		if (!profile) {
+		if (!profile?.user_id) {
 			fetchUserData()
 		}
 

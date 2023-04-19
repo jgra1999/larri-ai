@@ -18,9 +18,9 @@ export default function Home() {
 			<>
 				<main>
 					<div className='flex flex-col gap-y-5 items-center text-center mt-10'>
-						<h2 className='text-5xl font-bold text-newDark'>
+						<h1 className='text-5xl font-bold text-newDark'>
 							Aprende sin <span className='text-primary'>Límites</span>
-						</h2>
+						</h1>
 						<p className='text-gray-400 text-lg w-3/4 font-medium'>
 							Asistencia educativa virtual con inteligencia artificial
 						</p>
@@ -53,7 +53,9 @@ export default function Home() {
 						<div className='flex-1'>
 							<img
 								src='/img/feature1.png'
-								alt=''
+								alt='Feature 1 larri image'
+								width='675.6'
+								height='380'
 								className='sm:h-[460px] md:h-auto'
 								loading='lazy'
 							/>
@@ -63,7 +65,9 @@ export default function Home() {
 						<div className='flex-1 order-2 md:order-1'>
 							<img
 								src='/img/feature2.png'
-								alt=''
+								alt='Feature 2 larri image'
+								width='675.6'
+								height='380'
 								className='sm:h-[460px] md:h-auto'
 								loading='lazy'
 							/>
@@ -96,7 +100,9 @@ export default function Home() {
 						<div className='flex-1'>
 							<img
 								src='/img/feature3.png'
-								alt=''
+								alt='Feature 3 larri image'
+								width='675.6'
+								height='380'
 								className='sm:h-[460px] md:h-auto'
 								loading='lazy'
 							/>

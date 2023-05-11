@@ -25,7 +25,8 @@ export default function LoginPage() {
 			const { data } = await supabase.auth.signInWithOtp({
 				email,
 				options: {
-					emailRedirectTo: 'https://larri-ai.com/procesando'
+					// emailRedirectTo: 'https://larri-ai.com/procesando'
+					emailRedirectTo: 'http://localhost:3000/procesando'
 				}
 			})
 		} catch (error) {

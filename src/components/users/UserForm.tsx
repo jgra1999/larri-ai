@@ -20,12 +20,17 @@ import { supabase } from '@/supabase/client'
 import { useRouter } from 'next/router'
 import { Checkbox } from '../forms/CheckBox'
 
-export function UserForm() {
+interface userFormProp {
+	userEmail: string | undefined
+}
+
+export function UserForm({ userEmail }: userFormProp) {
 	const [isSending, setIsSending] = useState(false)
 	const router = useRouter()
 
 	const initialValues: UserFormValues = {
 		full_name: undefined,
+		email: userEmail,
 		city: undefined,
 		phone: undefined,
 		is_student: false,
@@ -33,7 +38,7 @@ export function UserForm() {
 	}
 
 	const handleSubmit = async (values: UserFormValues) => {
-		const { full_name, city, phone, is_student } = values
+		const { full_name, city, phone, is_student, email } = values
 
 		try {
 			setIsSending(true)
@@ -43,6 +48,7 @@ export function UserForm() {
 
 			const { error } = await supabase.from('profiles').insert({
 				full_name,
+				email,
 				city,
 				phone,
 				is_student,
@@ -69,6 +75,14 @@ export function UserForm() {
 					icon={<UserIcon className='w-5 h-5 text-gray-400' />}
 					validate={validateUserName}
 					value={initialValues.full_name}
+				/>
+				<FormikInput
+					label='Correo Electrónico'
+					name='email'
+					inputType='text'
+					placeholder=''
+					icon={<UserIcon className='w-5 h-5 text-gray-400' />}
+					value={initialValues.email}
 				/>
 				<FormikInput
 					label='Ciudad'
@@ -136,7 +150,7 @@ export function UserForm() {
 									pr-4
 									pl-10
 									text-sm
-												text-gray-500
+								text-gray-500
 									font-medium
 									relative
 									cursor-pointer

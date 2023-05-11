@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 module.exports = {
 	content: ['./app/**/*.{js,ts,jsx,tsx}', './src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
@@ -18,6 +20,10 @@ module.exports = {
 				blink: {
 					to: { visibility: 'hidden' }
 				}
+			},
+
+			fontFamily: {
+				sans: ['var(--font-inter)', ...fontFamily.sans]
 			}
 		}
 	},

@@ -14,6 +14,7 @@ export interface CheckoutFormValues {
 
 export interface UserFormValues {
 	full_name: string | undefined
+	email: string | undefined
 	city: string | undefined
 	phone: number | undefined
 	is_student: boolean

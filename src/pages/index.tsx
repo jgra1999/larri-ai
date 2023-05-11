@@ -86,7 +86,7 @@ export default function Home() {
 					</section>
 					<section className='w-full flex flex-col gap-y-10 lg:gap-x-10 md:flex-row justify-around items-center bg-white px-8 md:px-16 py-10 xl:min-h-[755px]'>
 						<div className='space-y-5 flex-1'>
-							<h2 className='font-bold text-4xl lg:text-6xl'>
+							<h2 className='font-bold text-4xl lg:text-[58px] leading-tight'>
 								Aprendizaje, <span className='text-primary'>Innovación</span> y
 								Crecimiento
 							</h2>

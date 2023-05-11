@@ -44,7 +44,7 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 					target='_blank'
 					className='hover:text-primary transition-colors duration-200'
 				>
-					Docs
+					Guía
 				</a>
 
 				{profile?.user_id ? (

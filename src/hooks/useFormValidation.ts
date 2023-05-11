@@ -17,6 +17,15 @@ export const validateUserName = (value: any) => {
 	return errorMessage
 }
 
+export const validateUserEmail = (value: any) => {
+	let errorMessage
+
+	if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+		errorMessage = 'Campo requerido. Ingresa una dirección de correo valida.'
+	}
+	return errorMessage
+}
+
 export const validateAmount = (value: any) => {
 	let errorMessage
 

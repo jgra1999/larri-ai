@@ -12,23 +12,19 @@ export default function ProcessPage() {
 	const { profile, setProfile, logout } = useUserStore()
 	useEffect(() => {
 		const fetchUserData = async () => {
-			console.log('fetch')
-
 			try {
 				const {
 					data: { user }
 				} = await supabase.auth.getUser()
-				console.log('🚀 ~ file: index.tsx:18 ~ fetchUserData ~ user :', user)
 
 				const { data, error } = await supabase
 					.from('profiles')
 					.select()
 					.eq('user_id', user?.id)
-				console.log('🚀 ~ file: index.tsx:25 ~ fetchUserData ~ data:', data)
 
 				setProfile(data?.[0])
 
-				if (data?.length === 0) {
+				if (data?.length === 0 || data === null) {
 					router.push('/completar-perfil')
 				} else {
 					router.push('/perfil')

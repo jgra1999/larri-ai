@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { supabase } from '@/supabase/client'
@@ -9,6 +9,7 @@ import { Layout } from '@/layout/Layout'
 export default function ProfilePage() {
 	const router = useRouter()
 	const { profile, setProfile, logout } = useUserStore()
+	const [planExpired, setPlanExpired] = useState(false)
 
 	useEffect(() => {
 		const fetchUserData = async () => {
@@ -22,7 +23,7 @@ export default function ProfilePage() {
 					.select()
 					.eq('user_id', user?.id)
 
-				if (data?.length === 0) {
+				if (data?.length === 0 || data === null) {
 					router.push('/completar-perfil')
 				}
 
@@ -34,6 +35,25 @@ export default function ProfilePage() {
 
 		if (!profile?.user_id) {
 			fetchUserData()
+		}
+		if (profile?.free_plan) {
+			const current_date = new Date()
+			const plan_duration = 7 * 24 * 60 * 60 * 1000
+			const last_update_date = new Date(profile?.updated_at)
+
+			if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
+				setPlanExpired(true)
+			}
+		}
+
+		if (profile?.payment_plan) {
+			const current_date = new Date()
+			const plan_duration = 30 * 24 * 60 * 60 * 1000
+			const last_update_date = new Date(profile?.updated_at)
+
+			if (current_date.getTime() - last_update_date.getTime() >= plan_duration) {
+				setPlanExpired(true)
+			}
 		}
 	}, [])
 
@@ -75,11 +95,25 @@ export default function ProfilePage() {
 						</div>
 					</div>
 
-					<div className='text-center'>
-						<p className='text-gray-400 font-medium text-5xl'>
-							{profile?.payment_plan ? 'Plan de 30 días' : 'Plan gratuito'}
-						</p>
-					</div>
+					{planExpired === false ? (
+						<div className='text-center'>
+							<p className='text-gray-400 font-medium text-5xl'>
+								{profile?.payment_plan ? 'Plan de 30 días' : 'Plan gratuito'}
+							</p>
+						</div>
+					) : (
+						<div className='text-center'>
+							<p className='text-red-500 font-medium text-5xl'>Plan vencido</p>
+							<p>
+								<a
+									href='https://iventium.com/producto/larri-ia-suscripcion/'
+									className='py-3 px-8 rounded-lg text-lg bg-primary font-bold text-white hover:bg-[#fe984f] transition-colors duration-200'
+								>
+									Actualizar plan
+								</a>
+							</p>
+						</div>
+					)}
 
 					<div className='flex flex-wrap gap-5'>
 						<button

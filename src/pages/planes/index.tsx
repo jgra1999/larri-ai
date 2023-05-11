@@ -77,7 +77,7 @@ export default function PricingPage() {
 						Elige tu <span className='text-primary'>Plan</span>
 					</h2>
 					<p className='font-medium sm:text-lg text-gray-400 max-w-[570px]'>
-						Inicia tu periodo de prueba de 3 días y evalúa las habilidades de Larri.
+						Inicia tu periodo de prueba de 7 días y evalúa las habilidades de Larri.
 						El plan de pago mensual ofrece más recursos.
 					</p>
 				</div>
@@ -85,7 +85,7 @@ export default function PricingPage() {
 				<div className='w-full h-screen xl:w-[55%] bg-primary flex flex-wrap items-center justify-around py-8 gap-y-10'>
 					<PricingCard
 						plan='Prueba Gratis'
-						description='Experimenta la versatilidad de la herramienta con los 3 días de prueba gratuita.'
+						description='Experimenta la versatilidad de la herramienta con los 7 días de prueba gratuita.'
 						price='$0.00'
 					>
 						<>
@@ -107,14 +107,9 @@ export default function PricingPage() {
 									IA
 								</li>
 								<li className='flex gap-x-2 text-sm text-gray-500 font-medium'>
-									<CheckIcon className='w-5 h-5 text-primary stroke-2' /> 3 días de
+									<CheckIcon className='w-5 h-5 text-primary stroke-2' /> 7 días de
 									duración
 								</li>
-								<li className='flex gap-x-2 text-sm text-gray-500 font-medium'>
-									<CheckIcon className='w-5 h-5 text-primary stroke-2' /> 30
-									preguntas
-								</li>
-
 								<li className='flex gap-x-2 text-sm text-gray-500 font-medium'>
 									<CheckIcon className='w-5 h-5 text-primary stroke-2' /> Sin soporte
 									técnico
@@ -143,10 +138,6 @@ export default function PricingPage() {
 								<li className='flex gap-x-2 text-sm text-gray-500 font-medium'>
 									<CheckIcon className='w-5 h-5 text-primary stroke-2' /> 30 días de
 									duración
-								</li>
-								<li className='flex gap-x-2 text-sm text-gray-500 font-medium'>
-									<CheckIcon className='w-5 h-5 text-primary stroke-2' /> 350
-									preguntas
 								</li>
 								<li className='flex gap-x-2 text-sm text-gray-500 font-medium'>
 									<CheckIcon className='w-5 h-5 text-primary stroke-2' /> Soporte

@@ -12,7 +12,9 @@ type Props = {
 }
 
 export function Message({ message, ai }: Props) {
-	const avatar = ai ? '/img/chat-icon.jpg' : '/img/default-img.png'
+	const avatar = ai
+		? 'https://res.cloudinary.com/hothra/image/upload/v1684519492/Larri-AI/chat-icon_pc3pqo.jpg'
+		: '/img/default-img.png'
 
 	const textElement = ai ? <TypingEffect text={message} /> : message
 

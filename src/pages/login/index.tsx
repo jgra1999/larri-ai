@@ -11,6 +11,7 @@ import {
 } from '@/components/Icons'
 
 import { supabase } from '@/supabase/client'
+import { CookiesBanner } from '@/components/CookiesBanner'
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('')
@@ -25,8 +26,8 @@ export default function LoginPage() {
 			const { data } = await supabase.auth.signInWithOtp({
 				email,
 				options: {
-					// emailRedirectTo: 'https://larri-ai.com/procesando'
-					emailRedirectTo: 'http://localhost:3000/procesando'
+					emailRedirectTo: 'https://larri-ai.com/procesando'
+					// emailRedirectTo: 'http://localhost:3000/procesando'
 				}
 			})
 		} catch (error) {
@@ -123,6 +124,7 @@ export default function LoginPage() {
 							</button>
 						</div>
 					</div>
+					<CookiesBanner />
 				</main>
 			</Layout>
 		</>

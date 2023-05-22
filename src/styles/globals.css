@@ -37,4 +37,8 @@
 		@apply font-medium;
 		@apply mb-2;
 	}
+
+	.cookie__center {
+		left: calc(50% - 50px);
+	}
 }

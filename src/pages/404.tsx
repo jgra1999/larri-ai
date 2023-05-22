@@ -20,7 +20,7 @@ export default function Custom404() {
 				</div>
 				<div className='w-1/2 h-screen hidden lg:block'>
 					<img
-						src='/img/feature4.jpg'
+						src='https://res.cloudinary.com/hothra/image/upload/v1684518797/Larri-AI/feature4-scsa.jpg'
 						alt='feature 4 image'
 						className='w-full h-full'
 						loading='lazy'

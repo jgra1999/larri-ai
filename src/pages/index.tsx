@@ -4,8 +4,13 @@ import { Layout } from '../layout/Layout'
 import { Footer } from '@/layout/Footer'
 import { Options } from '@/layout/Options'
 
+import { MotionImage } from '@/components/animations/MotionImage'
+import { MotionDiv } from '@/components/animations/MotionDiv'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+
 export default function Home() {
-	//TODO: Agregar poster al video
+	const [maintenanceMode, setMaintenanceMode] = useState(true)
 	return (
 		<Layout
 			title='Larri AI - Inicio'
@@ -17,7 +22,12 @@ export default function Home() {
 		>
 			<>
 				<main>
-					<div className='flex flex-col gap-y-5 items-center text-center mt-10'>
+					<motion.div
+						initial={{ opacity: 0, y: 50 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 1, type: 'tween' }}
+						className='flex flex-col gap-y-5 items-center text-center mt-10'
+					>
 						<h1 className='text-5xl font-bold text-newDark'>
 							Aprende sin <span className='text-primary'>Límites</span>
 						</h1>
@@ -30,9 +40,15 @@ export default function Home() {
 						>
 							Empezar Ahora
 						</Link>
-					</div>
+					</motion.div>
 					<div className='bg-white max-h-[600px] w-11/12 shadow-md mx-auto container rounded-xl my-10 flex justify-center items-center'>
-						<video className='max-h-[600px] w-11/12' autoPlay loop muted>
+						<video
+							className='max-h-[600px] w-11/12'
+							autoPlay
+							loop
+							muted
+							poster='/img/poster.png'
+						>
 							<source
 								src='https://res.cloudinary.com/hothra/video/upload/v1678990923/Larri-AI/home-video_adspfd.mp4'
 								type='video/mp4'
@@ -40,7 +56,7 @@ export default function Home() {
 						</video>
 					</div>
 					<section className='w-full flex flex-col gap-y-10 lg:gap-x-10 md:flex-row justify-around items-center bg-white px-8 md:px-16 py-10'>
-						<div className='space-y-5 flex-1'>
+						<MotionDiv>
 							<h2 className='font-bold text-4xl lg:text-6xl'>
 								Escribe tus <span className='text-primary'>dudas</span>
 							</h2>
@@ -49,30 +65,22 @@ export default function Home() {
 								información y recursos para su educación, tareas y proyectos de
 								investigación.
 							</p>
-						</div>
+						</MotionDiv>
 						<div className='flex-1'>
-							<img
-								src='/img/feature1.png'
-								alt='Feature 1 larri image'
-								width='675.6'
-								height='380'
-								className='sm:h-[460px] md:h-auto'
-								loading='lazy'
+							<MotionImage
+								imgUrl='https://res.cloudinary.com/hothra/image/upload/v1684518800/Larri-AI/feature-1.png'
+								imgAlt='Feature 1 larri image'
 							/>
 						</div>
 					</section>
 					<section className='w-full flex flex-col gap-y-10 lg:gap-x-10 md:flex-row justify-around items-center bg-zinc-900 px-8 md:px-16 py-10'>
 						<div className='flex-1 order-2 md:order-1'>
-							<img
-								src='/img/feature2.png'
-								alt='Feature 2 larri image'
-								width='675.6'
-								height='380'
-								className='sm:h-[460px] md:h-auto'
-								loading='lazy'
+							<MotionImage
+								imgUrl='https://res.cloudinary.com/hothra/image/upload/v1684518800/Larri-AI/feature2_e6ivxa.png'
+								imgAlt='Feature 2 larri image'
 							/>
 						</div>
-						<div className='space-y-5 flex-1 order-1 md:order-2'>
+						<MotionDiv css='order-1 md:order-2'>
 							<h2 className='font-bold text-4xl lg:text-6xl text-white'>
 								<span className='text-primary'>Infinidad</span> de recursos
 							</h2>
@@ -82,10 +90,10 @@ export default function Home() {
 								revistas y libros. También busca información en línea, como sitios
 								web, blogs y foros.
 							</p>
-						</div>
+						</MotionDiv>
 					</section>
 					<section className='w-full flex flex-col gap-y-10 lg:gap-x-10 md:flex-row justify-around items-center bg-white px-8 md:px-16 py-10 xl:min-h-[755px]'>
-						<div className='space-y-5 flex-1'>
+						<MotionDiv>
 							<h2 className='font-bold text-4xl lg:text-[58px] leading-tight'>
 								Aprendizaje, <span className='text-primary'>Innovación</span> y
 								Crecimiento
@@ -96,15 +104,11 @@ export default function Home() {
 								relacionados con la investigación, como la recopilación de datos, el
 								análisis de datos y la redacción de trabajos.
 							</p>
-						</div>
+						</MotionDiv>
 						<div className='flex-1'>
-							<img
-								src='/img/feature3.png'
-								alt='Feature 3 larri image'
-								width='675.6'
-								height='380'
-								className='sm:h-[460px] md:h-auto'
-								loading='lazy'
+							<MotionImage
+								imgUrl='https://res.cloudinary.com/hothra/image/upload/v1684518801/Larri-AI/feature3_px4kqb.png'
+								imgAlt='Feature 3 larri image'
 							/>
 						</div>
 					</section>

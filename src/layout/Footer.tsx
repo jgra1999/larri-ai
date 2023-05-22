@@ -6,18 +6,18 @@ import Link from 'next/link'
 
 export function Footer() {
 	return (
-		<footer className='bg-primary pt-20 pb-5 text-white px-5 w-full'>
+		<footer className='bg-zinc-900 pt-20 pb-5 text-white px-5 w-full'>
 			<div className='grid grid-cols-1 md:grid-cols-3 md:justify-items-center gap-y-10'>
 				<div className='flex flex-col gap-y-3'>
 					<img
-						src='./img/logo-white-beta.png'
+						src='./img/logo-full-white.png'
 						alt='Larri logo'
 						width='128'
 						height='33.59'
 						className='w-32'
 						loading='lazy'
 					/>
-					<p className='font-medium text-lg'>
+					<p className='font-medium text-lg text-zinc-400'>
 						Copyright © 2023 Larri, Inc. All rights reserved.
 					</p>
 				</div>
@@ -25,7 +25,7 @@ export function Footer() {
 					<h4 className='font-bold text-3xl'>Redes Sociales</h4>
 					<div className='flex md:justify-center items-center gap-x-5'>
 						<a href='mailto:soporte@larri-ai.com' target='_blank'>
-							<EnvelopeIcon className='w-8 h-8 text-white' strokeWidth={2.5} />
+							<EnvelopeIcon className='w-8 h-8 text-zinc-400' strokeWidth={2.5} />
 						</a>
 						<a
 							href='https://instagram.com/iventium?igshid=YjNmNGQ3MDY='
@@ -38,12 +38,20 @@ export function Footer() {
 				</div>
 				<div className='flex flex-col gap-y-3'>
 					<h4 className='font-bold text-3xl'>Legal</h4>
-					<div className='flex flex-col gap-y-2 font-medium text-lg'>
-						<a href='/terminos-y-condiciones' target='_blank'>
+					<div className='flex flex-col gap-y-2 font-medium text-lg text-zinc-400'>
+						<a
+							href='/terminos-y-condiciones'
+							target='_blank'
+							className='active:text-primary hover:text-primary'
+						>
 							Términos y Condiciones
 						</a>
 
-						<a href='/politica-de-privacidad' target='_blank'>
+						<a
+							href='/politica-de-privacidad'
+							target='_blank'
+							className='active:text-primary hover:text-primary'
+						>
 							Políticas de Privacidad
 						</a>
 					</div>

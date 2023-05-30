@@ -11,7 +11,6 @@ import {
 } from '@/components/Icons'
 
 import { supabase } from '@/supabase/client'
-import { CookiesBanner } from '@/components/CookiesBanner'
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('')
@@ -124,7 +123,6 @@ export default function LoginPage() {
 							</button>
 						</div>
 					</div>
-					<CookiesBanner />
 				</main>
 			</Layout>
 		</>

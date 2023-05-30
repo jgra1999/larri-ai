@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { Header } from './Header'
+import { CookiesBanner } from '@/components/CookiesBanner'
 
 type Props = {
 	children: React.ReactElement
@@ -39,6 +40,8 @@ export function Layout({
 			{showHeader ? <Header bgWhiteColor={bg} /> : ''}
 
 			{children}
+
+			<CookiesBanner />
 		</div>
 	)
 }

@@ -22,28 +22,32 @@ export function Message({ message, ai }: Props) {
 
 	return (
 		<div
-			className={`flex py-8 px-4 md:px-20 lg:px-52 w-full relative object-none object-bottom ${
-				ai ? 'bg-white' : ''
+			className={`grid relative object-none object-bottom w-full ${
+				ai ? 'text-start' : 'text-end'
 			}`}
 		>
-			<article className='flex items-start justify-between w-full gap-4'>
-				<Avatar>
+			<article
+				className={`flex items-start justify-between  py-3 px-4 w-auto md:max-w-[45%] rounded-md shadow mb-8 ${
+					ai ? 'bg-primary text-white relative' : 'bg-gray-50 justify-self-end'
+				}`}
+			>
+				{/* <Avatar>
 					<img
 						src={avatar}
 						alt='Avatar'
 						className='w-8 h-8 lg:w-10 lg:h-10 rounded-full'
 					/>
-				</Avatar>
+				</Avatar> */}
 
-				<div className='min-h-[20px] flex items-start gap-4 whitespace-pre-wrap flex-1'>
-					<div className='w-full break-words text-sm md:text-base leading-6'>
+				<div className='min-h-[20px] flex items-center gap-4 whitespace-pre-wrap flex-1'>
+					<div className='w-full break-words text-sm  leading-6'>
 						<p className='font-medium'>{textElement}</p>
 					</div>
 				</div>
 				{ai && (
 					<CopyToClipboard text={message}>
 						<button onClick={handleNotify}>
-							<ClipboardIcon className='w-4 h-4 text-gray-500 lg:hover:text-primary active:text-primary' />
+							<ClipboardIcon className='w-4 h-4 text-gray-500 lg:hover:text-primary active:text-primary absolute -top-5 right-0' />
 						</button>
 					</CopyToClipboard>
 				)}

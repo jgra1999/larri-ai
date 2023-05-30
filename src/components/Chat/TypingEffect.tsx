@@ -40,7 +40,7 @@ export function TypingEffect({ text }: Props) {
 		<span
 			className={`${
 				showCursor
-					? 'after:content-["❚"] after:ml-1 after:text-primary after:bg-primary after:animate-typing'
+					? 'after:content-["❚"] after:ml-1 after:text-white after:bg-white after:animate-typing'
 					: ''
 			}`}
 		>

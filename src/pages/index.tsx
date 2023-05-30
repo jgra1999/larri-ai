@@ -1,16 +1,24 @@
-import Link from 'next/link'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
-import { Layout } from '../layout/Layout'
+import { Layout } from '@/layout/Layout'
 import { Footer } from '@/layout/Footer'
 import { Options } from '@/layout/Options'
 
 import { MotionImage } from '@/components/animations/MotionImage'
 import { MotionDiv } from '@/components/animations/MotionDiv'
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { ChatContainer } from '@/components/Chat/ChatContainer'
 
-export default function Home() {
+import en from '../../public/lang/en'
+import es from '../../public/lang/es'
+
+export default function HomePage() {
 	const [maintenanceMode, setMaintenanceMode] = useState(true)
+	const router = useRouter()
+	const { locale } = router
+	const t = locale === 'en' ? en : es
+
 	return (
 		<Layout
 			title='Larri AI - Inicio'
@@ -29,19 +37,20 @@ export default function Home() {
 						className='flex flex-col gap-y-5 items-center text-center mt-10'
 					>
 						<h1 className='text-5xl font-bold text-newDark'>
-							Aprende sin <span className='text-primary'>Límites</span>
+							{t.titleHomePagePt1}{' '}
+							<span className='text-primary'>{t.titleHomePagePt2}</span>
 						</h1>
 						<p className='text-gray-400 text-lg w-3/4 font-medium'>
-							Asistencia educativa virtual con inteligencia artificial
+							{t.subTitleHomePage}
 						</p>
-						<Link
+						{/* <Link
 							href='/chat'
 							className='py-2 px-4 rounded-lg text-lg bg-primary font-bold text-white hover:bg-[#fe984f] transition-colors duration-200 flex justify-center'
 						>
 							Empezar Ahora
-						</Link>
+						</Link> */}
 					</motion.div>
-					<div className='bg-white max-h-[600px] w-11/12 shadow-md mx-auto container rounded-xl my-10 flex justify-center items-center'>
+					{/* <div className='bg-white max-h-[600px] w-11/12 shadow-md mx-auto container rounded-xl my-10 flex justify-center items-center'>
 						<video
 							className='max-h-[600px] w-11/12'
 							autoPlay
@@ -54,16 +63,16 @@ export default function Home() {
 								type='video/mp4'
 							/>
 						</video>
-					</div>
+					</div> */}
+					<ChatContainer />
 					<section className='w-full flex flex-col gap-y-10 lg:gap-x-10 md:flex-row justify-around items-center bg-white px-8 md:px-16 py-10'>
 						<MotionDiv>
 							<h2 className='font-bold text-4xl lg:text-6xl'>
-								Escribe tus <span className='text-primary'>dudas</span>
+								{t.h2HomePage1Pt1}{' '}
+								<span className='text-primary'>{t.h2HomePage1Pt2}</span>
 							</h2>
 							<p className='text-gray-500 font-medium text-sm md:text-base'>
-								El trabajo de Larri consiste en ayudar a las personas a encontrar
-								información y recursos para su educación, tareas y proyectos de
-								investigación.
+								{t.descriptionHomePage1}
 							</p>
 						</MotionDiv>
 						<div className='flex-1'>
@@ -82,27 +91,23 @@ export default function Home() {
 						</div>
 						<MotionDiv css='order-1 md:order-2'>
 							<h2 className='font-bold text-4xl lg:text-6xl text-white'>
-								<span className='text-primary'>Infinidad</span> de recursos
+								<span className='text-primary'>{t.h2HomePage2Pt1}</span>{' '}
+								{t.h2HomePage2Pt2}
 							</h2>
 							<p className='text-gray-100 font-medium text-sm md:text-base'>
-								La información que usa Larri proviene de varias fuentes, incluyendo
-								investigaciones académicas, estudios de caso, informes de expertos,
-								revistas y libros. También busca información en línea, como sitios
-								web, blogs y foros.
+								{t.descriptionHomePage2}
 							</p>
 						</MotionDiv>
 					</section>
 					<section className='w-full flex flex-col gap-y-10 lg:gap-x-10 md:flex-row justify-around items-center bg-white px-8 md:px-16 py-10 xl:min-h-[755px]'>
 						<MotionDiv>
 							<h2 className='font-bold text-4xl lg:text-[58px] leading-tight'>
-								Aprendizaje, <span className='text-primary'>Innovación</span> y
-								Crecimiento
+								{t.h2HomePage3Pt1}{' '}
+								<span className='text-primary'>{t.h2HomePage3Pt2}</span>
+								{t.h2HomePage3Pt3}
 							</h2>
 							<p className='text-gray-500 font-medium text-sm md:text-base'>
-								Larri puede ayudarte con materias como matemáticas, ciencias,
-								historia, lenguaje y literatura. También puede ayudar con temas
-								relacionados con la investigación, como la recopilación de datos, el
-								análisis de datos y la redacción de trabajos.
+								{t.descriptionHomePage3}
 							</p>
 						</MotionDiv>
 						<div className='flex-1'>

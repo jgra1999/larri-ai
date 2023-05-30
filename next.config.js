@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	i18n: {
+		locales: ['en', 'es'],
+		defaultLocale: 'es'
+	},
 	env: {
 		OPENAI_API_KEY: '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', //esta es mi api key
 		/* OPENAI_API_KEY: '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', */ // api de; work

@@ -2,10 +2,17 @@ import React, { useRef } from 'react'
 import { eForm } from '@/types/form'
 import { ArrowUpCircleIcon } from '@heroicons/react/24/outline'
 import { useChatStore } from '@/store/chat'
+import { useRouter } from 'next/router'
+import en from 'public/lang/en'
+import es from 'public/lang/es'
 
 type eKeyBoard = React.KeyboardEvent<HTMLTextAreaElement>
 
 export function ChatForm() {
+	const router = useRouter()
+	const { locale } = router
+	const t = locale === 'en' ? en : es
+
 	const textAreaRef = useRef<HTMLTextAreaElement | null>(null)
 	const { sendPrompt } = useChatStore()
 
@@ -55,6 +62,7 @@ export function ChatForm() {
 							defaultValue=''
 							ref={textAreaRef}
 							onKeyUp={handleKeyUp}
+							placeholder={t.placeHolderChat}
 						></textarea>
 						<button className='absolute right-2 bottom-2.5 p-1 hover:bg-lightGray rounded-lg transition-colors duration-200'>
 							<ArrowUpCircleIcon className='w-6 h-6 text-primary' />
@@ -62,9 +70,7 @@ export function ChatForm() {
 					</div>
 				</form>
 				<div className='text-center mt-2'>
-					<p className='text-gray-400 text-[10px]'>
-						Presiona shift + enter para hacer un salto de linea
-					</p>{' '}
+					<p className='text-gray-400 text-[10px]'>{t.enterTip}</p>{' '}
 				</div>
 			</div>
 		</>

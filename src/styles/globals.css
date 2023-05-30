@@ -18,6 +18,20 @@
 		scroll-snap-type: y mandatory;
 		scroll-snap-points-y: 100vh 0;
 	}
+	.submenu {
+		@apply absolute;
+		@apply right-2;
+		@apply bg-white;
+		@apply p-3;
+		@apply flex;
+		@apply flex-col;
+		@apply gap-y-2;
+		@apply shadow-lg;
+	}
+
+	.submenu__item {
+		@apply text-sm;
+	}
 
 	input[type='checkbox']:checked + label:before {
 		@apply bg-primary;
@@ -40,5 +54,14 @@
 
 	.cookie__center {
 		left: calc(50% - 50px);
+	}
+
+	::-webkit-scrollbar {
+		@apply w-2;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply bg-gray-300;
+		@apply rounded;
 	}
 }

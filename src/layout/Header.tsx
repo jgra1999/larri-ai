@@ -1,65 +1,141 @@
+import { useEffect, useState, MouseEvent } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useUserStore } from '@/store/user'
+import { useAnimate, stagger, motion } from 'framer-motion'
 
-import { GlobeAltIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { UserCircleIcon, LanguageIcon } from '@heroicons/react/24/solid'
+import en from '../../public/lang/en'
+import es from '../../public/lang/es'
 
 type HeaderProps = {
 	bgWhiteColor?: boolean
 }
 
+const staggerMenuItems = stagger(0.1, { startDelay: 0.15 })
+
+function useMenuAnimation(isOpen: boolean) {
+	const [scope, animate] = useAnimate()
+
+	useEffect(() => {
+		animate(
+			'.submenu',
+			{
+				clipPath: isOpen
+					? 'inset(0% 0% 0% 0% round 10px)'
+					: 'inset(10% 50% 90% 50% round 10px)'
+			},
+			{
+				type: 'spring',
+				bounce: 0,
+				duration: 0.5
+			}
+		)
+
+		animate(
+			'.submenu__item',
+			isOpen
+				? { opacity: 1, scale: 1, filter: 'blur(0px)' }
+				: { opacity: 0, scale: 0.3, filter: 'blur(20px)' },
+			{
+				duration: 0.2,
+				delay: isOpen ? staggerMenuItems : 0
+			}
+		)
+	}, [isOpen])
+
+	return scope
+}
+
 export function Header({ bgWhiteColor }: HeaderProps) {
 	const { profile } = useUserStore()
+	const [isOpen, setIsOpen] = useState(false)
+	const scope = useMenuAnimation(isOpen)
+	const router = useRouter()
+	const { locale } = router
+	const t = locale === 'en' ? en : es
+
+	const handleLocaleLanguage = (e: MouseEvent, locale: string) => {
+		e.preventDefault()
+		router.push(router.pathname, router.asPath, { locale })
+	}
 
 	return (
 		<nav
-			className={`flex justify-between px-2 sm:px-7 py-5 ${
+			ref={scope}
+			className={`flex justify-between px-2 sm:px-7 py-3 bg-white ${
 				bgWhiteColor ? 'bg-white' : ''
 			}`}
 		>
 			<Link href='/'>
 				<img
-					src='./img/logo-beta.png'
+					src='./img/logo.png'
 					alt='Logo Larri'
 					width='144'
 					height='81'
 					className='w-36'
 				/>
 			</Link>
-			<div className='flex items-center gap-x-3 text-xs sm:gap-x-8 sm:text-lg font-medium text-gray-500'>
-				{/* <div className='flex items-center gap-x-1 group'>
-					<span className='font-bold group-hover:text-primary transition-colors duration-200'>
-						ES
-					</span>
-					<GlobeAltIcon className='h-6 w-6 group-hover:text-primary transition-colors duration-200' />
-				</div> */}
-
-				<Link
-					href='/planes'
-					className='hover:text-primary transition-colors duration-200'
-				>
-					Precios
-				</Link>
-				<a
-					href='https://docs.larri-ai.com/'
-					target='_blank'
-					className='hover:text-primary transition-colors duration-200'
-				>
-					Guía
-				</a>
-
-				{profile?.user_id ? (
-					<Link href='/perfil' passHref>
-						<UserCircleIcon className='h-7 w-7 text-gray-400 hover:text-primary transition-colors duration-200' />
-					</Link>
-				) : (
+			<ul className='flex items-center gap-x-3 text-xs sm:gap-x-8 sm:text-lg font-medium text-gray-500'>
+				<li>
 					<Link
-						href='/login'
-						className=' hover:text-primary transition-colors duration-200'
+						href='/planes'
+						className='hover:text-primary transition-colors duration-200'
 					>
-						Iniciar sesión
+						{t.linkNav1}
 					</Link>
-				)}
-			</div>
+				</li>
+				<li>
+					<a
+						href='https://docs.larri-ai.com/'
+						target='_blank'
+						className='hover:text-primary transition-colors duration-200'
+					>
+						{t.linkNav2}
+					</a>
+				</li>
+
+				<li>
+					{profile?.user_id ? (
+						<Link href='/perfil' passHref>
+							<UserCircleIcon className='h-7 w-7 text-gray-400 hover:text-primary transition-colors duration-200' />
+						</Link>
+					) : (
+						<Link
+							href='/login'
+							className=' hover:text-primary transition-colors duration-200'
+						>
+							{t.linkNav3}
+						</Link>
+					)}
+				</li>
+				<li>
+					<motion.button
+						whileTap={{ scale: 0.97 }}
+						onClick={() => setIsOpen(!isOpen)}
+					>
+						<LanguageIcon className='h-5 w-5 hover:text-primary transition-colors duration-200' />
+					</motion.button>
+					<ul
+						style={{
+							pointerEvents: isOpen ? 'auto' : 'none',
+							clipPath: 'inset(10% 50% 90% 50% round 10px)'
+						}}
+						className='submenu absolute bg-white right-2'
+					>
+						<li className='submenu__item'>
+							<a href='#' onClick={(e) => handleLocaleLanguage(e, 'es')}>
+								{t.linkLanguage1}
+							</a>
+						</li>
+						<li className='submenu__item'>
+							<a href='#' onClick={(e) => handleLocaleLanguage(e, 'en')}>
+								{t.linkLanguage2}
+							</a>
+						</li>
+					</ul>{' '}
+				</li>
+			</ul>
 		</nav>
 	)
 }

@@ -3,8 +3,15 @@ import React from 'react'
 import { EnvelopeIcon } from '@heroicons/react/24/outline'
 import { InstaIcon, TwitterIcon } from '@/components/Icons'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import en from 'public/lang/en'
+import es from 'public/lang/es'
 
 export function Footer() {
+	const router = useRouter()
+	const { locale } = router
+	const t = locale === 'en' ? en : es
+
 	return (
 		<footer className='bg-zinc-900 pt-20 pb-5 text-white px-5 w-full'>
 			<div className='grid grid-cols-1 md:grid-cols-3 md:justify-items-center gap-y-10'>
@@ -22,7 +29,7 @@ export function Footer() {
 					</p>
 				</div>
 				<div className='flex flex-col gap-y-3'>
-					<h4 className='font-bold text-3xl'>Redes Sociales</h4>
+					<h4 className='font-bold text-3xl'>{t.h4Footer1}</h4>
 					<div className='flex md:justify-center items-center gap-x-5'>
 						<a href='mailto:soporte@larri-ai.com' target='_blank'>
 							<EnvelopeIcon className='w-8 h-8 text-zinc-400' strokeWidth={2.5} />
@@ -44,7 +51,7 @@ export function Footer() {
 							target='_blank'
 							className='active:text-primary hover:text-primary'
 						>
-							Términos y Condiciones
+							{t.linkFooterTC}
 						</a>
 
 						<a
@@ -52,14 +59,14 @@ export function Footer() {
 							target='_blank'
 							className='active:text-primary hover:text-primary'
 						>
-							Políticas de Privacidad
+							{t.linkFooterPrivacy}
 						</a>
 					</div>
 				</div>
 			</div>
 
 			<div className='font-medium w-full text-center mt-10 text-sm'>
-				⚡Desarrollador por{' '}
+				⚡Powered by{' '}
 				<a
 					href='https://iventium.com/'
 					target='_blank'

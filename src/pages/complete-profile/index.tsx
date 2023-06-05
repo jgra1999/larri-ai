@@ -8,8 +8,8 @@ import { UserForm } from '@/components/users/UserForm'
 type userEmailI = string | undefined
 
 export default function CompleteProfilePage() {
-	const router = useRouter()
 	const [userEmail, setUserEmail] = useState<userEmailI>('')
+	const router = useRouter()
 
 	useEffect(() => {
 		const fetchUserData = async () => {
@@ -24,7 +24,8 @@ export default function CompleteProfilePage() {
 					.eq('user_id', user?.id)
 
 				if (data?.length === 1) {
-					router.push('/perfil')
+					// router.push('/perfil')
+					router.push('/')
 				}
 				if (user) {
 					setUserEmail(user.email)
@@ -44,7 +45,12 @@ export default function CompleteProfilePage() {
 		>
 			<div className='flex justify-between items-center relative bg-white h-screen'>
 				<div className=' absolute left-5 top-3'>
-					<img src='./img/logo-beta.png' alt='Logo Larri' className='w-32' />
+					<img
+						src='https://res.cloudinary.com/hothra/image/upload/v1685574183/logo_rip0fl.png'
+						alt='Logo Larri'
+						className='w-32'
+						loading='lazy'
+					/>
 				</div>
 				<UserForm userEmail={userEmail} />
 				<div className='w-1/2 h-screen hidden lg:block'>

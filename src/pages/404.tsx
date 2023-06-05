@@ -6,7 +6,11 @@ export default function Custom404() {
 		<Layout showHeader={false} googleIndex={false}>
 			<div className='flex justify-between items-center relative bg-white h-screen'>
 				<div className=' absolute left-5 top-3'>
-					<img src='./img/logo-beta.png' alt='Logo Larri' className='w-32' />
+					<img
+						src='https://res.cloudinary.com/hothra/image/upload/v1685574183/logo_rip0fl.png'
+						alt='Logo Larri'
+						className='w-32'
+					/>
 				</div>
 				<div className='w-1/2 h-screen px-14 flex items-center'>
 					<div>
@@ -14,7 +18,7 @@ export default function Custom404() {
 							ERROR 4<span className='text-primary'>0</span>4
 						</h1>
 						<p className='mt-8 font-medium text-gray-500'>
-							La página que buscas no se encuentra aquí.
+							The page you`re looking for is not here.
 						</p>
 					</div>
 				</div>

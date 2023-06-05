@@ -32,16 +32,16 @@ function useMenuAnimation(isOpen: boolean) {
 			}
 		)
 
-		animate(
-			'.submenu__item',
-			isOpen
-				? { opacity: 1, scale: 1, filter: 'blur(0px)' }
-				: { opacity: 0, scale: 0.3, filter: 'blur(20px)' },
-			{
-				duration: 0.2,
-				delay: isOpen ? staggerMenuItems : 0
-			}
-		)
+		// animate(
+		// 	'.submenu__item',
+		// 	isOpen
+		// 		? { opacity: 1, scale: 1, filter: 'blur(0px)' }
+		// 		: { opacity: 0, scale: 0.3, filter: 'blur(20px)' },
+		// 	{
+		// 		duration: 0.2,
+		// 		delay: isOpen ? staggerMenuItems : 0
+		// 	}
+		// )
 	}, [isOpen])
 
 	return scope
@@ -69,7 +69,7 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 		>
 			<Link href='/'>
 				<img
-					src='./img/logo.png'
+					src='https://res.cloudinary.com/hothra/image/upload/v1685574183/logo_rip0fl.png'
 					alt='Logo Larri'
 					width='144'
 					height='81'
@@ -79,8 +79,8 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 			<ul className='flex items-center gap-x-3 text-xs sm:gap-x-8 sm:text-lg font-medium text-gray-500'>
 				<li>
 					<Link
-						href='/planes'
-						className='hover:text-primary transition-colors duration-200'
+						href='/prices'
+						className='hover:text-primary transition-colors duration-200 hidden md:block'
 					>
 						{t.linkNav1}
 					</Link>
@@ -89,7 +89,7 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 					<a
 						href='https://docs.larri-ai.com/'
 						target='_blank'
-						className='hover:text-primary transition-colors duration-200'
+						className='hover:text-primary transition-colors duration-200 hidden md:block'
 					>
 						{t.linkNav2}
 					</a>
@@ -98,12 +98,12 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 				<li>
 					{profile?.user_id ? (
 						<Link href='/perfil' passHref>
-							<UserCircleIcon className='h-7 w-7 text-gray-400 hover:text-primary transition-colors duration-200' />
+							<UserCircleIcon className='h-7 w-7 text-gray-400 hover:text-primary transition-colors duration-200 hidden md:block' />
 						</Link>
 					) : (
 						<Link
 							href='/login'
-							className=' hover:text-primary transition-colors duration-200'
+							className=' hover:text-primary transition-colors duration-200 hidden md:block'
 						>
 							{t.linkNav3}
 						</Link>
@@ -114,7 +114,7 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 						whileTap={{ scale: 0.97 }}
 						onClick={() => setIsOpen(!isOpen)}
 					>
-						<LanguageIcon className='h-5 w-5 hover:text-primary transition-colors duration-200' />
+						<LanguageIcon className='h-6 md:h-5 w-6 md:w-5 md:hover:text-primary active:text-primary transition-colors duration-200' />
 					</motion.button>
 					<ul
 						style={{

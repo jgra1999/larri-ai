@@ -17,7 +17,7 @@ export function Footer() {
 			<div className='grid grid-cols-1 md:grid-cols-3 md:justify-items-center gap-y-10'>
 				<div className='flex flex-col gap-y-3'>
 					<img
-						src='./img/logo-full-white.png'
+						src='https://res.cloudinary.com/hothra/image/upload/v1685574183/logo-full-white_fpdm1g.png'
 						alt='Larri logo'
 						width='128'
 						height='33.59'
@@ -47,7 +47,7 @@ export function Footer() {
 					<h4 className='font-bold text-3xl'>Legal</h4>
 					<div className='flex flex-col gap-y-2 font-medium text-lg text-zinc-400'>
 						<a
-							href='/terminos-y-condiciones'
+							href='/terms-and-conditions'
 							target='_blank'
 							className='active:text-primary hover:text-primary'
 						>
@@ -55,7 +55,7 @@ export function Footer() {
 						</a>
 
 						<a
-							href='/politica-de-privacidad'
+							href='/privacy-policy'
 							target='_blank'
 							className='active:text-primary hover:text-primary'
 						>

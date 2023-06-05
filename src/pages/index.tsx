@@ -10,8 +10,8 @@ import { MotionImage } from '@/components/animations/MotionImage'
 import { MotionDiv } from '@/components/animations/MotionDiv'
 import { ChatContainer } from '@/components/Chat/ChatContainer'
 
-import en from '../../public/lang/en'
-import es from '../../public/lang/es'
+import en from 'public/lang/en'
+import es from 'public/lang/es'
 
 export default function HomePage() {
 	const [maintenanceMode, setMaintenanceMode] = useState(true)

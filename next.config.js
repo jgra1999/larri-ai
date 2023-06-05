@@ -3,7 +3,7 @@ const nextConfig = {
 	reactStrictMode: true,
 	i18n: {
 		locales: ['en', 'es'],
-		defaultLocale: 'es'
+		defaultLocale: 'en'
 	},
 	env: {
 		OPENAI_API_KEY: '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', //esta es mi api key

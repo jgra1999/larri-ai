@@ -4,7 +4,11 @@ export function MaintenanceView() {
 	return (
 		<div className='container mx-auto w-3/4 flex flex-col items-center mt-20 gap-y-8'>
 			<div className=' absolute left-5 top-3'>
-				<img src='./img/logo.png' alt='Logo Larri' className='w-32' />
+				<img
+					src='https://res.cloudinary.com/hothra/image/upload/v1685574183/logo_rip0fl.png'
+					alt='Logo Larri'
+					className='w-32'
+				/>
 			</div>
 			<img
 				src='/img/maintenance-ilustration.png'

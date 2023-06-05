@@ -27,8 +27,10 @@ export function Message({ message, ai }: Props) {
 			}`}
 		>
 			<article
-				className={`flex items-start justify-between  py-3 px-4 w-auto md:max-w-[45%] rounded-md shadow mb-8 ${
-					ai ? 'bg-primary text-white relative' : 'bg-gray-50 justify-self-end'
+				className={`flex items-start justify-between w-auto md:max-w-[45%] py-3 px-4  rounded-md shadow mb-8 ${
+					ai
+						? 'bg-primary text-white relative justify-self-start'
+						: 'bg-gray-50 justify-self-end'
 				}`}
 			>
 				{/* <Avatar>

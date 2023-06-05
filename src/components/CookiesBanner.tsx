@@ -1,9 +1,17 @@
 import React, { useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
+
 import { CookieIcon } from './Icons'
+
+import en from 'public/lang/en'
+import es from 'public/lang/en'
 
 export function CookiesBanner() {
 	const cookiesBanner = useRef<HTMLDivElement>(null)
 	const cookiesBackground = useRef<HTMLDivElement>(null)
+	const router = useRouter()
+	const { locale } = router
+	const t = locale === 'en' ? en : es
 
 	useEffect(() => {
 		if (!localStorage.getItem('cookies-accepted')) {
@@ -36,21 +44,19 @@ export function CookiesBanner() {
 			>
 				<CookieIcon />
 				<h3 className='font-bold text-lg'>Cookies</h3>
-				<p className='text-gray-400 font-medium'>
-					Utilizamos cookies propias y de terceros para mejorar nuestros servicios.
-				</p>
+				<p className='text-gray-400 font-medium'>{t.cookieBannerText}</p>
 				<button
 					onClick={handleCookiesBanner}
 					className='w-full bg-gray-600 text-white hover:bg-primary py-3 text-center transition-colors duration-200 rounded-md'
 				>
-					De acuerdo
+					{t.cookieBannerButton}
 				</button>
 				<a
-					href='/aviso-cookies'
+					href='/cookies-info'
 					target='_blank'
 					className='text-gray-400 hover:text-primary font-medium text-sm'
 				>
-					Aviso de Cookies
+					{t.cookieBannerLink}
 				</a>
 			</div>
 

@@ -24,7 +24,7 @@ export default function ProfilePage() {
 					.eq('user_id', user?.id)
 
 				if (data?.length === 0 || data === null) {
-					router.push('/completar-perfil')
+					router.push('/complete-profile')
 				}
 
 				setProfile(data?.[0])

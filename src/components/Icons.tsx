@@ -125,7 +125,7 @@ export const TwitterSolidIcon = () => {
 export const GmailSolidIcon = () => {
 	return (
 		<svg
-			className='w-5 h-5 fill-current text-gray-300 group-hover:text-[#ea4335]'
+			className='w-7 h-7 fill-current text-gray-300 group-hover:text-[#ea4335]'
 			version='1.1'
 			viewBox='0 0 56.6934 56.6934'
 			width='56.6934px'
@@ -143,7 +143,7 @@ export const FacebookSolidIcon = () => {
 	return (
 		<svg
 			xmlns='http://www.w3.org/2000/svg'
-			className='w-5 h-5 fill-current text-gray-300 '
+			className='w-7 h-7 fill-current text-gray-300 '
 			viewBox='0 0 24 24'
 		>
 			<path d='M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z' />

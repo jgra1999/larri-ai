@@ -1,7 +1,9 @@
-# Block all crawlers for /perfil
+# *
 User-agent: *
-Disallow: /perfil
+Allow: /
 
-# Block all crawlers for /chat
-User-agent: *
-Disallow: /chat
+# Host
+Host: https://larri-ai.com/
+
+# Sitemaps
+Sitemap: https://larri-ai.com/sitemap.xml

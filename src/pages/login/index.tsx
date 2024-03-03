@@ -7,8 +7,8 @@ import { EnvelopeIcon } from '@heroicons/react/24/solid'
 import { FacebookSolidIcon, LoadingIcon, GmailSolidIcon } from '@/components/Icons'
 
 import { supabase } from '@/supabase/client'
-import en from '../../../public/lang/en'
-import es from '../../../public/lang/es'
+import en from 'public/lang/en'
+import es from 'public/lang/es'
 
 export default function LoginPage() {
 	const [email, setEmail] = useState('')

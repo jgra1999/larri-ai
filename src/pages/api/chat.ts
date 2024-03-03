@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import api from './openAi'
 
 interface Data {
 	error?: string
@@ -47,7 +46,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
 		if (!response.ok) {
 			console.error(response.statusText)
-			return res.status(500).json({ error: 'OpenAI API error' })
+			console.error('volvimos a fallar :c')
+			return res.status(500).json({ error: response.statusText })
 		}
 
 		const json = await response.json()

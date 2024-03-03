@@ -87,7 +87,7 @@ export function Header({ bgWhiteColor }: HeaderProps) {
 				</li>
 				<li>
 					<a
-						href='https://docs.larri-ai.com/'
+						href='https://larri-ia-docs.netlify.app/'
 						target='_blank'
 						className='hover:text-primary transition-colors duration-200 hidden md:block'
 					>

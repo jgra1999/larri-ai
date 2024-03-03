@@ -30,41 +30,30 @@ export default function HomePage() {
 		>
 			<>
 				<main>
-					<motion.div
-						initial={{ opacity: 0, y: 50 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 1, type: 'tween' }}
-						className='flex flex-col gap-y-5 items-center text-center mt-10'
-					>
-						<h1 className='text-5xl font-bold text-newDark'>
-							{t.titleHomePagePt1}{' '}
-							<span className='text-primary'>{t.titleHomePagePt2}</span>
-						</h1>
-						<p className='text-gray-400 text-lg w-3/4 font-medium'>
-							{t.subTitleHomePage}
-						</p>
-						{/* <Link
-							href='/chat'
-							className='py-2 px-4 rounded-lg text-lg bg-primary font-bold text-white hover:bg-[#fe984f] transition-colors duration-200 flex justify-center'
+					<section>
+						<div className='absolute inset-0 -z-10 h-[1000px] w-full bg-white/40 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]'></div>
+						<motion.div
+							initial={{ opacity: 0, y: 50 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 1, type: 'tween' }}
+							className='flex flex-col gap-y-5 items-center text-center mt-10'
 						>
-							Empezar Ahora
-						</Link> */}
-					</motion.div>
-					{/* <div className='bg-white max-h-[600px] w-11/12 shadow-md mx-auto container rounded-xl my-10 flex justify-center items-center'>
-						<video
-							className='max-h-[600px] w-11/12'
-							autoPlay
-							loop
-							muted
-							poster='/img/poster.png'
-						>
-							<source
-								src='https://res.cloudinary.com/hothra/video/upload/v1678990923/Larri-AI/home-video_adspfd.mp4'
-								type='video/mp4'
-							/>
-						</video>
-					</div> */}
-					<ChatContainer />
+							<h1 className='text-5xl font-bold text-newDark'>
+								{t.titleHomePagePt1}{' '}
+								<span className='text-primary'>{t.titleHomePagePt2}</span>
+							</h1>
+							<p className='text-gray-400 text-lg w-3/4 font-medium'>
+								{t.subTitleHomePage}
+							</p>
+							{/* <Link
+								href='/chat'
+								className='py-2 px-4 rounded-lg text-lg bg-primary font-bold text-white hover:bg-[#fe984f] transition-colors duration-200 flex justify-center'
+							>
+								Empezar Ahora
+							</Link> */}
+						</motion.div>
+						<ChatContainer />
+					</section>
 					<section className='w-full flex flex-col gap-y-10 lg:gap-x-10 md:flex-row justify-around items-center bg-white px-8 md:px-16 py-10'>
 						<MotionDiv>
 							<h2 className='font-bold text-4xl lg:text-6xl'>

@@ -34,10 +34,7 @@ export function Footer() {
 						<a href='mailto:soporte@larri-ai.com' target='_blank'>
 							<EnvelopeIcon className='w-8 h-8 text-zinc-400' strokeWidth={2.5} />
 						</a>
-						<a
-							href='https://instagram.com/iventium?igshid=YjNmNGQ3MDY='
-							target='_blank'
-						>
+						<a href='#' target='_blank'>
 							<InstaIcon />
 						</a>
 						<TwitterIcon />
@@ -68,12 +65,12 @@ export function Footer() {
 			<div className='font-medium w-full text-center mt-10 text-sm'>
 				⚡Powered by{' '}
 				<a
-					href='https://iventium.com/'
+					href='https://github.com/jgra1999'
 					target='_blank'
-					className='hover:text-purple-500 transition-colors duration-300'
+					className='hover:text-primary transition-colors duration-300'
 					aria-label='Pagina web de Iventium'
 				>
-					Iventium
+					jgra
 				</a>
 			</div>
 		</footer>

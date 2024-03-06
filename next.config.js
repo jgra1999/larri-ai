@@ -6,7 +6,6 @@ const nextConfig = {
 		defaultLocale: 'en'
 	},
 	env: {
-		OPENAI_API_KEY: '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',
 		NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID: 'ca-pub-8979322655331375',
 		NEXT_PUBLIC_GOOGLE_ANALYTICS: 'G-Z0362T3MC6',
 		NEXT_PUBLIC_SUPABASE_URL: 'https://odhjapsnjwljayyvfjem.supabase.co',
